@@ -6,8 +6,9 @@
 
 var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $BODY = $('body'),
-    $MENU_TOGGLE = $('#menu_toggle'),
-    $SIDEBAR_MENU = $('#sidebar-menu'),
+    $MENU_TOGGLE =$('.main_container').find('#sidebar-toggle')
+    $SIDEBAR_MENU=$('.main_container').find('#sidebar-menu')/*$('#menu_toggle')*/,
+    //$SIDEBAR_MENU = $('#sidebar-menu'),
     $SIDEBAR_FOOTER = $('.sidebar-footer'),
     $LEFT_COL = $('.left_col'),
     $RIGHT_COL = $('.right_col'),
@@ -17,6 +18,8 @@ var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
 // Sidebar
 $(document).ready(function() {
     // TODO: This is some kind of easy fix, maybe we can improve this
+    console.log($MENU_TOGGLE)
+    console.log( $SIDEBAR_MENU)
     var setContentHeight = function () {
         // reset height
         $RIGHT_COL.css('min-height', $(window).height());
@@ -35,7 +38,7 @@ $(document).ready(function() {
     $SIDEBAR_MENU.find('a').on('click', function(ev) {
 
         var $li = $(this).parent();
-        console.log($li)
+        console.log('sidebar-li'+$li)
         if ($li.is('.active')) {
             $li.removeClass('active active-sm');
             $('ul:first', $li).slideUp(function() {
@@ -103,6 +106,7 @@ $(document).ready(function() {
     $('.collapse-link').on('click', function() {
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
+           
             $BOX_CONTENT = $BOX_PANEL.find('.x_content');
         
         // fix for some div with hardcoded fix class
