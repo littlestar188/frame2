@@ -28,6 +28,13 @@
     .hide{
       display: none;
     }
+    .right_col .sideRight_menu .tabs-left li.nav-item>a{
+    	-background-color:#b9bbba;
+    	-color:#fff;
+    	color:#1ABB9C;
+    	-color:#b9bbba;
+    	
+    }
   </style>
   <body class="nav-md">
     <div class="container body">
@@ -257,21 +264,24 @@
 	          	<ul class="nav nav-tabs tabs-left">
 	          		<li class="nav-item"><a>离心机&nbsp;&nbsp;<span class="fa fa-chevron-up"></span></a></li>
 
-	                <li class="hide">
+	                <li class="hide item-wrapper">
 		                <ul class="nav nav-tabs tabs-left">
 		                	<li><a href="#XKH001" data-toggle="tab" aria-expanded="false">XKH001</a></li>
 		                	<li><a href="#XKH002" data-toggle="tab" aria-expanded="false">XKH002</a></li>
 		                </ul>
 	                </li>
 	                <!-- /. -->
-	                <li class="nav-item"><a href="#profile" data-toggle="tab" aria-expanded="false">注塑机</a>
+	                <li class="nav-item"><a href="#profile" data-toggle="tab" aria-expanded="false">注塑机&nbsp;&nbsp;<span class="fa fa-chevron-up"></span></a></li>
+	                <li class="hide item-wrapper">
+		                <ul class="nav nav-tabs tabs-left">
+		                	<li><a href="#FTS001" data-toggle="tab" aria-expanded="false">FTS001</a></li>
+		                	<li><a href="#FTS001" data-toggle="tab" aria-expanded="false">FTS002</a></li>
+		                </ul>
 	                </li>
 	                <!-- /. -->
-	                <li class="nav-item"><a href="#messages" data-toggle="tab" aria-expanded="false">空压机</a>
-	                </li>
+	                <li class="nav-item"><a href="#messages" data-toggle="tab" aria-expanded="false">空压机</a></li>
 	                <!-- /. -->
-	                <li class="nav-item active"><a href="#settings" data-toggle="tab" aria-expanded="true">总览</a>
-	                </li>
+	                <li class="nav-item active"><a href="#settings" data-toggle="tab" aria-expanded="true">总览</a></li>
 	              </ul>
 	          </div>
 	          <!-- /.right_content -->
@@ -279,92 +289,221 @@
 				<div class="tab-content">
 				    <!-- tab-pane -->
 		            <div class="tab-pane" id="XKH001">
-		              <!-- <p class="lead">离心机</p> -->
+		              <h3 class="lead">XKH001 <b>产品详情</b></h3>
 		              <!-- row -->
-		              <div class="row top_tiles">
-		              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		                <div class="tile-stats">
-		                  <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-		                  <div class="count">179</div>
-		                  <h3>在库设备总量</h3>
-		                </div>
-		              </div>
-		              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		                <div class="tile-stats">
-		                  <div class="icon"><i class="fa fa-comments-o"></i></div>
-		                  <div class="count">179</div>
-		                  <h3>在库设备总量</h3>
-		                </div>
-		              </div>
-		              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		                <div class="tile-stats">
-		                  <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-		                  <div class="count">179</div>
-		                  <h3>在库设备总量</h3>
-		                </div>
-		              </div>
-		              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		                <div class="tile-stats">
-		                  <div class="icon"><i class="fa fa-check-square-o"></i></div>
-		                  <div class="count">179</div>
-		                  <h3>在库设备总量</h3>
-		                </div>
-		              </div>
-		            </div>
-		              
+		              <div class="row device_profile">
+		              <!-- /.col -->
+		              	<div class="col-lg-5">
+		              		 <div class="x_panel">                  
+			                  <div class="x_content">
+			                    <table class="table table-striped">
+			                      <tbody>
+			                        <tr>
+			                          <th scope="row" style="font-weight: 500">产品类型</th>
+			                          <td>离心机</td>        
+			                        </tr>
+			                        <!--  -->
+			                        <tr>
+			                          <th scope="row" style="font-weight: 500">产品型号</th>
+			                          <td>XKH001</td>      
+			                        </tr>
+			                        <!--  -->
+			                        <tr>
+			                          <th scope="row" style="font-weight: 500">录入日期</th>
+			                          <td>2017/06/03</td>                        
+			                        </tr>
+			                        <!--  -->
+			                        <tr>
+			                          <th scope="row" style="font-weight: 500">入市日期</th>
+			                          <td>2010/01/02</td>
+			                        </tr>
+			                        <!--  -->
+			                        <tr>
+			                          <th scope="row" style="font-weight: 500">备注</th>
+			                          <td></td>
+			                        </tr>
+			                      </tbody>
+			                    </table>
+			                  </div>
+                			</div>
+		              	</div>
+		              	<!-- /.col -->
+		              	<div class="col-lg-2">
+		              		<div class="x_panel">
+		              			<div class="x_content">
+		              				<div class="image view view-first">
+		              					<img style="width:148.7%;display:block;" src="images/media.jpg" alt="">
+		              				</div>
+		              			</div>
+		              		</div>
+		              	</div>
+		              	<!--/.col  -->
+		              	<div class="col-lg-5">
+		              		<div class="x_panel">
+		              			<div class="x_title">标称参数录入</div>
+		              			<div class="x_content" style="height:160px">
+		              				
+		              			</div>
+		              		</div>	
+		              	</div>
+		              </div>	
+		              <!-- /.row2 -->
 		              <div class="row">
 		              <div class="col-md-12">
-		                <div class="x_panel">
-		                  <div class="x_title">
-		                    <h2>Weekly Summary <small>Activity shares</small></h2>
-		                    <ul class="nav navbar-right panel_toolbox">
-		                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-		                      </li>
-		                      <li class="dropdown">
-		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-		                        <ul class="dropdown-menu" role="menu">
-		                          <li><a href="#">Settings 1</a>
-		                          </li>
-		                          <li><a href="#">Settings 2</a>
-		                          </li>
-		                        </ul>
-		                      </li>
-		                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-		                      </li>
-		                    </ul>
-		                    <div class="clearfix"></div>
-		                  </div>
-		                  <div class="x_content">
+		                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+		                  <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+		                    <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">报警内容</a>
+		                    </li>
+		                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">参数列表</a>
+		                    </li>
+		                    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">关联设置</a>
+		                    </li>
+		                    <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">维保周期设置</a>
+		                    </li>
+		                  </ul>
+		                  <div id="myTabContent" class="tab-content">
+		                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
 
-		                    <div class="row" style="border-bottom: 1px solid #E0E0E0; padding-bottom: 5px; margin-bottom: 5px;">
-		                      <div class="col-md-7" style="overflow:hidden;">
-		                        <span class="sparkline_one" style="height: 160px; padding: 10px 25px;">
-		                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-		                                  </span>
-		                        <h4 style="margin:18px">Weekly sales progress</h4>
-		                      </div>
+		                      <!-- start recent activity -->
+		                      <table class="data table table-striped no-margin">
+		                        <thead>
+		                          <tr>
+		                            <th>序号</th>
+		                            <th>报警代码</th>
+		                            <th>报警名称</th>
+		                            <th class="hidden-phone">报警类型</th>
+		                            <th>参数代码</th>
+		                            <th>参数名称</th>
+		                            <th>判断类型</th>
+		                            <th>限值</th>
+		                            <th>创建时间</th>
+		                          </tr>
+		                        </thead>
+		                        <tbody>
+		                          <tr>
+		                            <td>1</td>
+		                            <td>New Company Takeover Review</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">18</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-success" data-transitiongoal="35"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                          <tr>
+		                            <td>2</td>
+		                            <td>New Partner Contracts Consultanci</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">13</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-danger" data-transitiongoal="15"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                          <tr>
+		                            <td>3</td>
+		                            <td>Partners and Inverstors report</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">30</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-success" data-transitiongoal="45"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                          <tr>
+		                            <td>4</td>
+		                            <td>New Company Takeover Review</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">28</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-success" data-transitiongoal="75"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                        </tbody>
+		                      </table>
+		                      <!-- end recent activity -->
 
-		                      <div class="col-md-5">
-		                        <div class="row" style="text-align: center;">
-		                          <div class="col-md-4">
-		                            <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-		                            <h4 style="margin:0">Bounce Rates</h4>
-		                          </div>
-		                          <div class="col-md-4">
-		                            <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-		                            <h4 style="margin:0">New Traffic</h4>
-		                          </div>
-		                          <div class="col-md-4">
-		                            <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-		                            <h4 style="margin:0">Device Share</h4>
-		                          </div>
-		                        </div>
-		                      </div>
+		                    </div>
+		                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+
+		                      <!-- start user projects -->
+		                      <table class="data table table-striped no-margin">
+		                        <thead>
+		                          <tr>
+		                            <th>#</th>
+		                            <th>Project Name</th>
+		                            <th>Client Company</th>
+		                            <th class="hidden-phone">Hours Spent</th>
+		                            <th>Contribution</th>
+		                          </tr>
+		                        </thead>
+		                        <tbody>
+		                          <tr>
+		                            <td>1</td>
+		                            <td>New Company Takeover Review</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">18</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-success" data-transitiongoal="35"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                          <tr>
+		                            <td>2</td>
+		                            <td>New Partner Contracts Consultanci</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">13</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-danger" data-transitiongoal="15"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                          <tr>
+		                            <td>3</td>
+		                            <td>Partners and Inverstors report</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">30</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-success" data-transitiongoal="45"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                          <tr>
+		                            <td>4</td>
+		                            <td>New Company Takeover Review</td>
+		                            <td>Deveint Inc</td>
+		                            <td class="hidden-phone">28</td>
+		                            <td class="vertical-align-mid">
+		                              <div class="progress">
+		                                <div class="progress-bar progress-bar-success" data-transitiongoal="75"></div>
+		                              </div>
+		                            </td>
+		                          </tr>
+		                        </tbody>
+		                      </table>
+		                      <!-- end user projects -->
+
+		                    </div>
+		                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+		                      <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+		                        photo booth letterpress, commodo enim craft beer mlkshk </p>
+		                    </div>
+		                    <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+		                      <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+		                        photo booth letterpress, commodo enim craft beer mlkshk </p>
 		                    </div>
 		                  </div>
 		                </div>
 		              </div>
-		            </div>
+		           		 </div>
 		            </div>
 		            <!-- tab-pane -->
 		            <div class="tab-pane" id="XKH002">XKH002 Tab.</div>
@@ -372,7 +511,7 @@
 		            <div class="tab-pane" id="profile">
 		            	 <div class="x_content">
 
-                    <p>注塑机<code>bulk_action</code> to table for bulk actions options on row select</p>
+                    <p>注塑机</p>
 
                     <div class="table-responsive">
                       <table class="table table-striped jambo_table bulk_action">
@@ -796,8 +935,10 @@
     <!-- echarts -->
     <script src="../vendors/echarts/dist/echarts.min.js"></script>
     <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- icheck -->
+    <script src="../vendors/nprogress/nprogress.js"></script>   
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+     <!-- icheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
     <!-- Chart.js -->
     <script src="../vendors/Chart.js/dist/Chart.min.js"></script>

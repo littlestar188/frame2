@@ -31,28 +31,44 @@ var index = {
         })
     },
     rightNav:function(){
+    	//模拟上下拉菜单
     	var flag = true;
+    	//$('.right_col .sideRight_menu .tabs-left li.nav-item>a').css({'background-color':'#b9bbba','color':'#fff'})
     	$('.right_col .sideRight_menu .tabs-left').on('click','li.nav-item',function(){
-    		
-    		if(flag){
-	    		console.log($(this))	    		
-	    		$(this).find('span.fa').removeClass('fa-chevron-up').addClass('fa-chevron-down');
-	    		$(this).next().removeClass('hide')
-	    		flag = false
-    		}
-    		else{   
-    		 			
-    			$(this).find('span.fa').removeClass('fa-chevron-down').addClass('fa-chevron-up');
-    			$(this).next().addClass('hide')
-    			flag = true
-    			
-    		}
-    		console.log(flag)
-    	})
+    		//判断是否存在子导航  		
+    		if($(this).next().is('.item-wrapper')){	//true    		
+	    		if(flag){
+		    		console.log($(this))	    		
+		    		$(this).find('span.fa').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+		    		$(this).next().removeClass('hide')
+		    		flag = false
+	    		}
+	    		else{   
+	    		 			
+	    			$(this).find('span.fa').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+	    			$(this).next().addClass('hide')
+	    			flag = true
+	    			
+	    		}
+	    		console.log(flag)
+    		}else{
+    			//点击主导航 子导航active消失
+    			$('li.item-wrapper li.active').removeClass('active');
 
-    	$('.right_col .sideRight_menu .tabs-left').on('click','li.not(".nav-item")',function(){
-    		$(this).siblings().has('.nav-item').removeClass('active')
+    				   			
+    		}
+    		
+
     	})
+    	//点击子导航 主导航active消失
+    	$('.right_col .sideRight_menu .tabs-left').on('click','li.item-wrapper li',function(){
+    		//console.log($(this))
+    		//console.log($(this).parents('.item-wrapper').siblings())
+    		var navItem_active = $(this).parents('.item-wrapper').siblings().filter('li.nav-item.active');
+    		$(navItem_active).removeClass('active');
+    		    		
+    	})
+    	
 
     }
 }

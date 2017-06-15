@@ -48,15 +48,7 @@ var index = {
             }
         })
     },
-    leftChildnav:function(){
-        $("#top_firstNav").on('click','li',function(event){
-            event = event || window.event;
-            event.stopPropagation();
-            //获取当前li下标
-            var index = $(this).eq();
-            console.log(index)
-        })
-    },
+    
     leftNav:function(){
         var that = this;
         $('#sidebar-menu').on('click','li',function(){
