@@ -56,17 +56,17 @@
                   <!-- /。0 -->
                   <li class="hide" data-index="0"><a><i class="fa fa-home"></i>首页</a></li>
                   <!-- /. 1-->
-                  <li class="" data-index="1"><a href="./device_map.html"><i class="fa fa-edit"></i>地图分布</a></li>
-                  <li class="" data-index="1"><a><i class="fa fa-edit"></i>设备列表<span class="fa fa-chevron-down"></span></a>
+                  <li class="hide" data-index="1"><a href="./device_map.html"><i class="fa fa-edit"></i>地图分布</a></li>
+                  <li class="hide" data-index="1"><a><i class="fa fa-edit"></i>设备列表</a>
                   	 <ul class="nav child_menu">
                       <li><a href="./device_listAll.html">所有设备</a></li>
-                      <li><a href="#">关联设备</a></li>
+                      <li><a href="./device_listConnect.html">关联设备</a></li>
                     </ul>
                   </li>
                   
                   <!-- /. 2-->
-                  <li class="hide" data-index="2"><a href="./fault_list.html"><i class="fa fa-desktop"></i>故障列表</a></li>
-                  <li class="hide" data-index="2"><a href="./fault_analyze.html"><i class="fa fa-desktop"></i>报警及故障统计</a></li>
+                  <li class="" data-index="2"><a href="./fault_list.html"><i class="fa fa-desktop"></i>故障列表</a></li>
+                  <li class="" data-index="2"><a href="./fault_analyze.html"><i class="fa fa-desktop"></i>报警及故障统计</a></li>
                   <!-- /. 3-->                 
                   <li class="hide" data-index="3"><a><i class="fa fa-table"></i>产品管理<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -75,8 +75,8 @@
                   </li>
                   <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
                      <ul class="nav child_menu">
-                      <li><a href="./company_user.html">公司用户</a></li>
-                      <li><a href="./customer.html">客户</a></li>
+                      <li><a href="#">公司用户</a></li>
+                      <li><a href="#">客户</a></li>
                     </ul>
                   </li>
                   <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 系统信息 <span class="fa fa-chevron-down"></span></a>
@@ -263,10 +263,10 @@
                <!-- required for floating -->
                <!-- Nav tabs -->
                <ul class="nav nav-tabs tabs-left">
-                 <li class="active"><a href="#list" data-toggle="tab">设备列表</a>
+                 <li class="active"><a href="#list" data-toggle="tab">未处理</a>
                  </li>
                  
-                 <li><a href="#chart" data-toggle="tab">监控图表</a>
+                 <li><a href="#chart" data-toggle="tab">全部报警</a>
                  </li>
                </ul>
              </div>
@@ -280,51 +280,54 @@
     	                <!-- search -->
     	               <form class="form-inline row" style="padding-bottom:5px">
     	               <!-- col -->
-    	               <div class="col-lg-1 control-group">
-    	                 <div class="controls">
-    	                    <select class="form-control" style="width: 120px">
-    	                      <option>全部</option>
-    	                      <option>离心机</option>
-    	                      <option>空压机</option>  
-    	                    </select>
-    	                 </div>
-    	               </div>
-    	               <!-- col -->
     	                 <div class="col-lg-1 control-group">
     	                   <div class="controls">
-    	                      <input type="text" style="width: 120px"  class="form-control" placeholder="编码">
+    	                      <input type="text" style="width: 120px"  class="form-control" placeholder="报警代码">
     	                      
     	                   </div>
     	                 </div>
     	                 <!--  -->
     	                 <div class="col-lg-1 control-group">
     	                   <div class="controls">
-    	                      <input type="text" style="width: 120px" class="form-control" placeholder="类别">                     
+    	                      <input type="text" style="width: 120px" class="form-control" placeholder="产品型号">                     
     	                   </div>
     	                 </div>
     	                 <!--  -->
     	                 <div class="col-lg-1 control-group">
     	                   <div class="controls">
-    	                      <input type="text" style="width: 120px" class="form-control" placeholder="型号">                     
+    	                      <input type="text" style="width: 120px" class="form-control" placeholder="产品类型">                     
     	                   </div>
     	                 </div>
     	                 <!--  -->
     	                 <div class="col-lg-1 control-group">
     	                   <div class="controls">
-    	                      <input type="text" style="width: 120px" class="form-control" placeholder="SIM卡号">                     
+    	                      <input type="text" style="width: 120px" class="form-control" placeholder="设备序列号">                     
     	                   </div>
     	                 </div> 
-    	                 <!--  -->
-    	                 <div class="col-lg-1 control-group">
-    	                   <div class="controls">
-    	                      <input type="text" style="width: 120px" class="form-control" placeholder="用户">                     
-    	                   </div>
-    	                 </div>
+    	                 <!-- col -->
+                      <div class="col-lg-1 control-group">
+                        <div class="controls">
+                           <select class="form-control" style="width: 120px">
+                             <option>产品类型</option>
+                             <option>离心机</option>
+                             <option>空压机</option>  
+                           </select>
+                        </div>
+                      </div>
+                      <!-- col -->
+                      <div class="col-lg-1 control-group">
+                        <div class="controls">
+                           <select class="form-control" style="width: 120px">
+                             <option>报警类型</option>
+                             <option>报警</option>
+                             <option>故障</option>  
+                           </select>
+                        </div>
+                      </div>
     	                 <!-- col -->
     	                 <div class="col-lg-1 control-group">
-    	                     <button type="submit" class="btn btn-success">搜索</button>
-    	                 </div>
-    	                 <!-- col end  -->
+                           <button type="submit" class="btn btn-success">搜索</button>
+                       </div>
     	               </form>
     	                <!-- table -->
     	                <div class="table-responsive">
@@ -488,18 +491,12 @@
     	                </div>
     	                <!-- option buttons -->
     	                <div class="options">
-    	                	<div class="form-inline row">	
-		    	                <div class="col-lg-1 control-group">
-		    	                     <button type="submit" class="btn btn-success">设备新增</button>
-		    	                </div>
+    	                	<div class="form-inline row">		    	               
 		    	                <!--  -->
-		    	                <div class="col-lg-1 control-group" style="margin-left:-36px">
+		    	                <div class="col-lg-1 control-group">
 		    	                     <button type="submit" class="btn btn-success">批量操作</button>
 		    	                </div>
 		    	                <!--  -->
-		    	                <div class="col-lg-1 control-group" style="margin-left:-36px">
-		    	                     <button type="submit" class="btn btn-success">参数显示设置</button>
-		    	                </div>
 	    	                </div>
     	                </div>
     	               <!--  -->
@@ -508,203 +505,36 @@
                  </div>
                 
                  <div class="tab-pane" id="chart">
-                 <form class="form-inline row">
-                 <!-- col -->
-	                 <div class="col-lg-1 control-group">
-	                   <div class="controls">
-	                      <select class="form-control" style="width: 120px">
-	                      	<option value="">序列号</option>
-	                        <option>XHK001</option>
-	                        <option>FTS001</option> 
-	                      </select>
-	                   </div>
-	                 </div>
-                 </form>
-                 <!-- col charts -->
-				<div class="charts row" style="padding-top:5px">
-					<div class="col-md-3 col-xs-12 widget widget_tally_box">
-					  <div class="x_panel fixed_height_300" style="padding:0">
-					  <div class="title"><p style="background-color:rgba(52,73,94,.94);color:#fff;line-height:48px; ">离心机-设备序列号</p></div>
-					    <div class="x_content">
+                   <form class="form-inline row">
+                   <!-- col -->
+  	                 <div class="col-lg-1 control-group">
+  	                   <div class="controls">
+  	                      <select class="form-control" style="width: 120px">
+  	                      	<option value="">序列号</option>
+  	                        <option>XHK001</option>
+  	                        <option>FTS001</option> 
+  	                      </select>
+  	                   </div>
+  	                 </div>
+                   </form>
+                   <!-- col charts -->
+          				<div class="charts row" style="padding-top:5px">
+          					
 
-					      
-						  <h3 class="name">XHK001</h3>	
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o"></i></h3>
-					            <span>连接状态</span>
-					          </li>
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o green"></i></h3>
-					            <span>运行状态</span>
-					          </li>
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o red"></i></h3>
-					            <span>故障状态</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li style="width:45%">
-					            <h3>123</h3>
-					            <span>启停次数</span>
-					          </li>
-					          <li style="width:45%">
-					            <h3>1234</h3>
-					            <span>故障次数</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li style="width:45%">
-					            <h3>214541</h3>
-					            <span>总耗能(kWh)</span>
-					          </li>
-					          <li style="width:45%">
-					            <h3>15</h3>
-					            <span>当前运行时长(h)</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					    </div>
-					  </div>
-					</div>
-					<!-- col -->
-					<div class="col-md-3 col-xs-12 widget widget_tally_box">
-					  <div class="x_panel fixed_height_300" style="padding:0">
-					  <div class="title"><p style="background-color:rgba(52,73,94,.94);color:#fff;line-height:48px; ">离心机-设备序列号</p></div>
-					    <div class="x_content">
-
-					      
-						  <h3 class="name">XHK001</h3>	
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o"></i></h3>
-					            <span>连接状态</span>
-					          </li>
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o green"></i></h3>
-					            <span>运行状态</span>
-					          </li>
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o red"></i></h3>
-					            <span>故障状态</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li style="width:45%">
-					            <h3>123</h3>
-					            <span>启停次数</span>
-					          </li>
-					          <li style="width:45%">
-					            <h3>1234</h3>
-					            <span>故障次数</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li style="width:45%">
-					            <h3>214541</h3>
-					            <span>总耗能(kWh)</span>
-					          </li>
-					          <li style="width:45%">
-					            <h3>15</h3>
-					            <span>当前运行时长(h)</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					    </div>
-					  </div>
-					</div>
-					<!-- col -->
-					<div class="col-md-3 col-xs-12 widget widget_tally_box">
-					  <div class="x_panel fixed_height_300" style="padding:0">
-					  <div class="title"><p style="background-color:rgba(52,73,94,.94);color:#fff;line-height:48px; ">离心机-设备序列号</p></div>
-					    <div class="x_content">
-
-					      
-						  <h3 class="name">XHK001</h3>	
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o"></i></h3>
-					            <span>连接状态</span>
-					          </li>
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o green"></i></h3>
-					            <span>运行状态</span>
-					          </li>
-					          <li>
-					            <h3><i class="fa fa-lightbulb-o red"></i></h3>
-					            <span>故障状态</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li style="width:45%">
-					            <h3>123</h3>
-					            <span>启停次数</span>
-					          </li>
-					          <li style="width:45%">
-					            <h3>1234</h3>
-					            <span>故障次数</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					      <div class="flex">
-					        <ul class="list-inline count2" style="border:none;">
-					          <li style="width:45%">
-					            <h3>214541</h3>
-					            <span>总耗能(kWh)</span>
-					          </li>
-					          <li style="width:45%">
-					            <h3>15</h3>
-					            <span>当前运行时长(h)</span>
-					          </li>
-					        </ul>
-					      </div>
-					      <!--  -->
-					    </div>
-					  </div>
-					</div>
-
-					<!--  -->
-				</div>
-				<!-- option buttons -->
-                <div class="options">
-                	<div class="form-inline row">	
-    	                <div class="col-lg-1 control-group">
-    	                     <button type="submit" class="btn btn-success">设备新增</button>
-    	                </div>
-    	                <!--  -->
-    	                <div class="col-lg-1 control-group" style="margin-left:-36px">
-    	                     <button type="submit" class="btn btn-success">批量操作</button>
-    	                </div>
-    	                <!--  -->
-    	                <div class="col-lg-1 control-group" style="margin-left:-36px">
-    	                     <button type="submit" class="btn btn-success">参数显示设置</button>
-    	                </div>
-	                </div>
-                </div>	
-                 <!--  -->
+          					<!--  -->
+          				</div>
+  				      <!-- option buttons -->
+                  <div class="options">
+                  	<div class="form-inline row">	
+      	                <div class="col-lg-1 control-group">
+      	                     <button type="submit" class="btn btn-success">批量操作</button>
+      	                </div>
+      	                <!--  -->  
+  	                </div>
+                  </div>	
+                   <!--  -->
+                   </div>
                  </div>
-               </div>
              </div>
 
              <div class="clearfix"></div>

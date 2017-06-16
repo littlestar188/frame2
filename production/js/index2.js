@@ -25,6 +25,7 @@ var index = {
         	})
         	$('#sidebar-menu').find('.side-menu>li').not('[data-index="'+index+'"]').addClass('hide')
         	//that.secondNav.eq(index).siblings().addClass('hide');
+            console.log($('#sidebar-menu').find('.side-menu>li[data-index="'+index+'"]'))
          	//console.log($('#sidebar-menu').find('.side-menu>li').not('[data-index="'+index+'"]'))
             
             console.log("firstNav.li---"+index)
