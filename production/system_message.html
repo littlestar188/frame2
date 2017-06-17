@@ -15,11 +15,8 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+	<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -30,8 +27,6 @@
     .hide{
       display: none;
     }
-    
-    
   </style>
   <body class="nav-md">
     <div class="container body">
@@ -60,28 +55,28 @@
                   <!-- /. 1-->
                   <li class="hide" data-index="1"><a href="./device_map.html"><i class="fa fa-edit"></i>地图分布</a></li>
                   <li class="hide" data-index="1"><a><i class="fa fa-edit"></i>设备列表<span class="fa fa-chevron-down"></span></a>
-                  	 <ul class="nav child_menu">
+                    <ul class="nav child_menu">
                       <li><a href="./device_listAll.html">所有设备</a></li>
                       <li><a href="#">关联设备</a></li>
                     </ul>
                   </li>
                   
                   <!-- /. 2-->
-                  <li class="" data-index="2"><a href="./fault_list.html"><i class="fa fa-desktop"></i>故障列表</a></li>
-                  <li class="" data-index="2"><a href="./fault_analyze.html"><i class="fa fa-desktop"></i>报警及故障统计</a></li>
+                  <li class="hide" data-index="2"><a href="./fault_list.html"><i class="fa fa-desktop"></i>故障列表</a></li>
+                  <li class="hide" data-index="2"><a href="./fault_analyze.html"><i class="fa fa-desktop"></i>报警及故障统计</a></li>
                   <!-- /. 3-->                 
-                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i>产品管理<span class="fa fa-chevron-down"></span></a>
+                  <li class="" data-index="3"><a><i class="fa fa-table"></i>产品管理<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="./product_configuration.html">产品配置</a></li>
                     </ul>
                   </li>
-                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
+                  <li class="" data-index="3"><a><i class="fa fa-table"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
                      <ul class="nav child_menu">
                       <li><a href="./company_user.html">公司用户</a></li>
                       <li><a href="./customer.html">客户</a></li>
                     </ul>
                   </li>
-                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 系统信息 <span class="fa fa-chevron-down"></span></a>
+                  <li class="" data-index="3"><a><i class="fa fa-table"></i> 系统信息 <span class="fa fa-chevron-down"></span></a>
                      <ul class="nav child_menu">
                       <li><a href="./system_message.html">企业信息</a></li>
                       <li><a href="./system_log.html">系统日志</a></li>
@@ -257,175 +252,49 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-         <div class="x_panel">
-           
-           <div class="x_content">
-
-             <div class="col-xs-1">
-               <!-- required for floating -->
-               <!-- Nav tabs -->
-               <ul class="nav nav-tabs tabs-left">
-                 <li class="active"><a href="#distribution" data-toggle="tab">故障分布</a>
-                 </li>
-                 
-                 <li><a href="#trend" data-toggle="tab">故障趋势</a>
-                 </li>
-               </ul>
-             </div>
-
-             <div class="col-xs-11">
-               <!-- Tab panes -->
-               <div class="tab-content">
-                 <div class="tab-pane active" id="distribution">
-	                <!-- tab --> 
-            	    <div class="nav_menu" style="background:#fff;border:none;">
-	            	    <div class="nav navbar navbar-nav navbar-left">
-	            			<h3>故障分布</h3>
-	            	    </div>
-		                <!-- option buttons -->
-		                <div class="options nav navbar navbar-nav navbar-right">	                	
-		                	<div class="form-inline row" style="padding-top:10px;">	    		    	<!--  -->
-		    	                <div class="col-lg-1 control-group">
-		    	                     <button type="submit" class="btn btn-success">添加</button>
-		    	                </div>
-		    	                <!--  -->
-		    	                <div class="col-lg-1 control-group" style="margin-left:-90px">
-		    	                     <button type="submit" class="btn btn-success">删除</button>
-		    	                </div>
-		    	                <!--  -->
-			                </div>
-		                </div>
-	                	<!-- option end -->
-	                </div>	
-	                <!-- charts -->
-	                <div class="charts row">	
-	                	<!-- col -->
-	                	<div class="col-md-4 col-sm-4 col-xs-12">
-	                	  <div class="x_panel">
-	                	    <div class="x_title">
-	                	      <div class="col-lg-4 control-group" style="margin-left:-15px;">
-	          	                 <div class="controls">
-	          	                    <select class="form-control" style="width: 120px">
-	          	                      <option>请选择</option>
-	          	                      <option>离心机</option>
-	          	                      <option>压缩机</option>
-	          	                      <option>真空机</option>
-	          	                      <option>空压机</option>  
-	          	                    </select>
-	          	                 </div>
-	          	               </div>
-	          	               <!-- col -->
-	                	      <ul class="nav navbar-right panel_toolbox">
-	                	        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-	                	        </li>
-	                	        <li class="dropdown">
-	                	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-	                	          <ul class="dropdown-menu" role="menu">
-	                	            <li><a href="#">Settings 1</a>
-	                	            </li>
-	                	            <li><a href="#">Settings 2</a>
-	                	            </li>
-	                	          </ul>
-	                	        </li>
-	                	        <li><a class="close-link"><i class="fa fa-close"></i></a>
-	                	        </li>
-	                	      </ul>
-	                	      <div class="clearfix"></div>
-	                	    </div>
-	                	    <div class="x_content">
-							  <h4 style="margin-left:17089px;display: none;">报警分布</h4>	
-	                	      <div id="echart_pie" style="height:350px;"></div>
-
-	                	    </div>
-	                	  </div>
-	                	</div>
-	                	<!-- col end -->
-	                </div>
-	                <div class="clearfix"></div>
-                
-                 </div>
-                
-                 <div class="tab-pane" id="trend">
-               
-                    <div class="nav_menu" style="background:#fff;border:none;">
-	            	    <div class="nav navbar navbar-nav navbar-left">
-	            			<h3>故障趋势</h3>
-	            	    </div>
-		                <!-- option buttons -->
-		                <div class="options nav navbar navbar-nav navbar-right">	                	
-		                	<div class="form-inline row" style="padding-top:10px;">	    		    	<!--  -->
-		    	                <div class="col-lg-1 control-group">
-		    	                     <button type="submit" class="btn btn-success">添加</button>
-		    	                </div>
-		    	                <!--  -->
-		    	                <div class="col-lg-1 control-group" style="margin-left:-90px">
-		    	                     <button type="submit" class="btn btn-success">删除</button>
-		    	                </div>
-		    	                <!--  -->
-			                </div>
-		                </div>
-	                	<!-- option end -->
-	                </div>
-	                <!-- charts -->
-    				<div class="charts row">
-    					<!-- col -->
-    					<div class="col-md-8 col-sm-8 col-xs-12">
-    					  <div class="x_panel">
-    					    <div class="x_title">
-    					       <!-- <div class="well" style="overflow:auto">	 -->
-    					    	<div class="">
-    					    	  <!-- <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;margin-left:-15px;">
-    					    	    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-    					    	    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-    					    	  </div> -->
-    					    	  <div class="col-md-4 controls" style="margin-left:-15px;">
-                        <div class="input-prepend input-group">
-                          <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                          <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="01/01/2016 - 01/25/2016">
-                        </div>
+           <div class="x_panel">
+            <div class="x_content">
+            <!--  -->
+            <div class="row">
+              <!-- col -->
+              <div class="col-md-3 col-sm-3 col-xs-12 profile_details">
+                  <div class="well profile_view">
+                      <div class="col-sm-12" style="padding:0">
+                      	<div class="col-xs-12" style="padding-bottom:10px;">
+                    		<h2 class="brief" style="line-height:230%"><b>海大物联科技有限公司</b></h2>
+                    		<button type="button" class="btn btn-primary btn-xs">详情</button>
+                    	</div>
+                      <!-- col -->
+                      <div class="col-xs-7">                       
+                        <ul class="list-unstyled">
+                          <li>地址 : 宁波海大</li>
+                          <li>电话 : 13264578912</li>
+                          <li>邮箱 : 578912@hadlinks.com</li>
+                        </ul>
+                      </div>
+                      <!-- col -->
+                      <div class="col-xs-5 text-left">
+                      	<ul class="list-unstyled">
+                          <li>合约状态 : 正常</li>
+                          <li>合约模式 : 按时间计费</li>
+                          <li>截止时间 : 2019/05/08</li>
+                        </ul>   
                       </div>
                       <!--  -->
-    					    	</div>
-                              <!--   </div>  -->
-    					      <!-- col -->
-    					      <ul class="nav navbar-right panel_toolbox">
-    					        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-    					        </li>
-    					        <li class="dropdown">
-    					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-    					          <ul class="dropdown-menu" role="menu">
-    					            <li><a href="#">Settings 1</a>
-    					            </li>
-    					            <li><a href="#">Settings 2</a>
-    					            </li>
-    					          </ul>
-    					        </li>
-    					        <li><a class="close-link"><i class="fa fa-close"></i></a>
-    					        </li>
-    					      </ul>
-    					      <div class="clearfix"></div>
-    					    </div>
-    					    <div class="x_content">
-
-    					      <div id="mainb" style="height:350px;"></div>
-
-    					    </div>
-    					  </div>
-    					</div>
-
-    				</div>
-    				<div class="clearfix"></div>
-                    <!--  -->
-                 </div>
-               </div>
-             </div>
-
-             <div class="clearfix"></div>
-
-           </div>
-         </div>
-
-        
+                    </div>
+                    <div class="col-xs-12 bottom text-center">
+                    </div>
+                  </div>
+                  <!-- col-sm-12 end -->
+                </div> 
+                
+               <!--  -->
+                <div class="clearfix"></div>
+            </div>
+            <!--  -->
+			</div>
+			<!--content end  -->	
+          </div>
         </div>
         <!-- /page content -->
 
@@ -448,24 +317,15 @@
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- Echarts -->
-    <script src="../vendors/echarts/dist/echarts.min.js"></script>
-    <script src="../vendors/echarts/map/js/world.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-     <!-- Ion.RangeSlider -->
- <!--     <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script> -->
-     <!-- Bootstrap Colorpicker -->
-   <!--   <script src="../vendors/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script> -->
-
-     <!-- jquery.inputmask -->
-    <!--  <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script> -->
-
- 	
-    <!-- Custom Theme Scripts -->  
-    <script src="../build/js/custom.min.js"></script>
-     <script src="./js/index2.js"></script>
+     <!-- icheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+ 
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
     
+    <!-- Custom Theme Scripts -->
+    
+    <script src="../build/js/custom.min.js"></script>
+    <script src="./js/index2.js"></script>
   </body>
 </html>

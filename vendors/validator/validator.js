@@ -15,17 +15,17 @@ var validator = (function($){
     /* general text messages
     */
     message = {
-        invalid         : 'invalid input',
+        invalid         : '输入格式不正确',//invalid input
         checked         : 'must be checked',
-        empty           : 'please put something here',
-        min             : 'input is too short',
-        max             : 'input is too long',
+        empty           : '内容不能为空',//please put something here
+        min             : '输入长度不正确',//input is too short
+        max             : '输入长度不正确',//input is too long
         number_min      : 'too low',
         number_max      : 'too high',
         url             : 'invalid URL',
         number          : 'not a number',
-        email           : 'email address is invalid',
-        email_repeat    : 'emails do not match',
+        email           : '邮箱地址格式不正确',//email address is invalid
+        email_repeat    : '两次邮箱输入不一致',//emails do not match
         password_repeat : 'passwords do not match',
         repeat          : 'no match',
         complete        : 'input is not complete',

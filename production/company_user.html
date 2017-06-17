@@ -15,6 +15,8 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
     <!-- iCheck -->
 	<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Custom Theme Style -->
@@ -78,8 +80,8 @@
                   </li>
                   <li class="" data-index="3"><a><i class="fa fa-table"></i> 系统信息 <span class="fa fa-chevron-down"></span></a>
                      <ul class="nav child_menu">
-                      <li><a href="#">企业信息</a></li>
-                      <li><a href="#">系统日志</a></li>
+                      <li><a href="./system_message.html">企业信息</a></li>
+                      <li><a href="./system_log.html">系统日志</a></li>
                     </ul>
                   </li>                  
                 </ul>
@@ -256,15 +258,15 @@
            <div class="x_content">
             <!--  -->
             <div class="row">
-              <div class="col-lg-3">
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
               	<div class="x_panel">
               		<div class="x_title">
-          				<button type="submit" class="btn btn-success" style="width:100%">新增角色</button>
+          				<button type="button" class="btn btn-success" style="width:100%"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增角色</button>
           				
-          				<button type="submit" class="btn btn-success" style="width:100%">编辑角色</button>	
+          				<button type="button" class="btn btn-success" style="width:100%"><i class="fa fa-edit"></i>&nbsp;&nbsp;编辑角色</button>	
           			</div>
               		<div class="x_content">
-              			<div class="table-responsive">
+              		<div class="table-responsive">
 	                 <table class="table table-striped jambo_table bulk_action">
 	                   <tbody>
 	                     <tr class="even pointer">
@@ -280,27 +282,138 @@
 	                   </tbody>
 	                 </table>
 	               </div>
+	               <!--  -->
+	               <div class="ln_solid"></div>	               
+	               <!-- <button type="button" class="btn btn-success" style="width:100%"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增客户</button> -->
+	             	<!-- Small modal -->
+	             	<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg"  style="width:100%"><i class="fa fa-plus"></i>&nbsp;&nbsp;新增客户</button>
+
+	             	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+	             	  <div class="modal-dialog modal-lg">
+	             	    <div class="modal-content">
+
+	             	      <div class="modal-header">
+	             	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+	             	        </button>
+	             	        <h4 class="modal-title" id="myModalLabel2">新增客户</h4>
+	             	      </div>
+	             	      <div class="modal-body">
+	             	       <!-- <div class="x_content"> -->
+	             	         <form class="form-horizontal form-label-left" novalidate>
+ 	                             <div class="item form-group">
+ 	                               <label class="control-label col-md-2 col-md-offset-1 col-xs-12" for="name">姓名 <span class="required">*</span>
+ 	                               </label>
+ 	                               <div class="col-md-5 col-sm-5 col-xs-12">
+ 	                                 <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" name="name" required="required" type="text">
+ 	                               </div>
+ 	                             </div>
+ 	                             <div class="item form-group">
+ 	                               <label class="control-label col-md-2 col-md-offset-1 col-xs-12" for="telephone">电话 <span class="required">*</span>
+ 	                               </label>
+ 	                               <div class="col-md-5 col-sm-5 col-xs-12">
+ 	                                 <input type="tel" id="telephone" name="phone" required="required" data-validate-length-range="8,11" class="form-control col-md-7 col-xs-12">
+ 	                               </div>
+ 	                             </div>
+ 	                             <div class="item form-group">
+ 	                               <label class="control-label col-md-2 col-md-offset-1 col-xs-12" for="email">邮箱 <span class="required">*</span>
+ 	                               </label>
+ 	                               <div class="col-md-5 col-sm-5 col-xs-12">
+ 	                                 <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+ 	                               </div>
+ 	                             </div>
+ 	                             <div class="item form-group">
+ 	                               <label class="control-label col-md-2 col-md-offset-1 col-xs-12" for="number">部门 <span class="required">*</span>
+ 	                               </label>
+ 	                               <div class="col-md-5 col-sm-5 col-xs-12">
+ 	                                 <select class="select2_single form-control" tabindex="-1">
+                                         <option>请选择</option>
+                                         <option>技术部</option>
+                                         <option>售后服务部</option> 
+                                     </select>
+ 	                               </div>
+ 	                             </div>
+ 	                             <div class="item form-group">
+ 	                               <label class="control-label col-md-2 col-md-offset-1 col-xs-12" for="website">角色 <span class="required">*</span>
+ 	                               </label>
+ 	                               <div class="col-md-5 col-sm-5 col-xs-12">
+ 	                                  <select class="select2_single form-control" tabindex="-1">
+                                         <option>请选择</option>
+                                         <option>管理员</option>
+                                         <option>客服</option> 
+                                     </select>
+ 	                               </div>
+ 	                             </div>
+ 	                            
+ 	                             
+ 	                            
+ 	                            
+ 	                            
+ 	                            
+ 	                             <!-- <div class="form-group">
+ 	                               <div class="col-md-6 col-md-offset-3">
+ 	                                 <button type="submit" class="btn btn-primary">Cancel</button>
+ 	                                 <button id="send" type="submit" class="btn btn-success">Submit</button>
+ 	                               </div>
+ 	                             </div> -->
+ 	                           </form>
+ 	                     <!--     </div> -->
+	             	        <!--  -->
+	             	      </div>
+	             	      <div class="modal-footer">
+	             	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	             	        <button type="button" class="btn btn-success">保存</button>
+	             	      </div>
+
+	             	    </div>
+	             	  </div>
+	             	</div>
+	             	<!-- /modals -->
+	               <!--  -->
               		</div>
               	</div>
               </div>
               <!-- col -->
-              <div class="col-lg-9">
+              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 	              <form class="form-inline row" style="padding-bottom:5px">
-	               <!-- col -->
-	                 <div class="col-md-2 control-group">
+	               <div class="col-md-2 col-sm-2 col-xs-12 control-group">
 	                   <div class="controls">
-	                      <input type="text" style="width: 180px" class="form-control" placeholder="公司名称">
-	                      
+	                        <select class="form-control" style="width: 180px">
+    	                      <option>账号状态</option>
+    	                      <option>已激活</option>
+    	                      <option>未激活</option>  
+    	                    </select>                   
+	                   </div>
+	                </div>
+	               <!-- col -->
+	                <div class="col-md-2 col-sm-2 col-xs-12 control-group">
+	                   <div class="controls">
+	                        <select class="form-control" style="width: 180px">
+    	                      <option>角色</option>
+    	                      <option>客服</option>
+    	                      <option>部门管理员</option>  
+    	                    </select>                   
+	                   </div>
+	                </div>
+	               <!-- col -->
+	                 <div class="col-md-2 col-sm-2 col-xs-12 control-group">
+	                   <div class="controls">
+	                      <input type="text" style="width: 180px" class="form-control" placeholder="姓名">	                      
 	                   </div>
 	                 </div>
 	                 <!-- col -->
-	                 <div class="col-md-1 control-group">
+	                 <div class="col-md-2 col-sm-2 col-xs-12 control-group">
+	                   <div class="controls">
+	                      <input type="text" style="width: 180px" class="form-control" placeholder="联系方式">	                      
+	                   </div>
+	                 </div>
+	                 <!-- col -->
+	                 <div class="col-md-1 col-sm-1 col-xs-12 control-group">
 	                 	<button type="submit" class="btn btn-success">搜索</button>
 	             	 </div> 
 	             	 <!-- col -->
-	             	 <div class="col-md-1 control-group" style="margin-left:-25px;">
+	             	<!--  <div class="col-md-1 control-group" style="margin-left:-25px;">
 	             	      <button type="submit" class="btn btn-success">新增客户</button>
-	             	 </div>
+	             	 </div> -->
 	               </form>
 	               <!-- table -->
 	               <div class="table-responsive">
@@ -316,11 +429,14 @@
 	                       <th class="column-title">联系人 </th>
 	                       <th class="column-title">联系方式 </th>
 	                       <th class="column-title">邮箱 </th>
-	                       <th class="column-title no-link last"><span class="nobr">创建时间</span>
+	                       <th class="column-title"><span class="nobr">创建时间</span>
 	                       </th>
-	                       <th class="column-title no-link last"><span class="nobr">状态</span>
+	                       <th class="column-title"><span class="nobr">状态</span>
 	                       </th>
 	                       <th class="column-title no-link last"><span class="nobr">操作</span>
+	                       </th>
+	                      <th class="bulk-actions" colspan="9">
+	                         <a class="antoo" style="color:#fff; font-weight:500;">已全选<!--  ( <span class="action-cnt"> </span> ) --> </a>
 	                       </th>
 	                     </tr>
 	                   </thead>
@@ -403,9 +519,12 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
      <!-- icheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
- 
+    <!-- Select2 -->
+    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
+     <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- <script src="../vendors/DateJS/build/date.js"></script> -->
     
     <!-- Custom Theme Scripts -->
     
