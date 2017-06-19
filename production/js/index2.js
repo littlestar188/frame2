@@ -1,25 +1,29 @@
 var index = {
-	firstNav:$("#top_firstNav"),
+	navMenu:$('.nav_menu'),
 	init:function(){
-        this.topNav();
-		this.leftChildnav();
-		this.rightNav();
+        this.render();
+		
 	},
 	render:function(){
-
+        this.topNav();
 	},
     topNav:function(){
-       // $('.nav_menu>nav').load('./layout/top_nav.html',function(){
-
-       //  });
+        var that = this;
+       $('#navigation').load('./layout/top_nav.html',function(){
+            that.leftChildnav();
+            that.rightNav();
+        });
        
         
     },
 	leftChildnav:function(){
 		var that = this;
-		var liLength = this.firstNav.find('li').length;	
+        var firstNav = this.navMenu.find('#top_firstNav') ;
+		var liLength = firstNav.find('li').length;	
+        console.log(firstNav)
 		//当主菜单被点击 	
-        this.firstNav.on('click','li',function(event){
+        firstNav.on('click','li',function(event){
+            alert(1)
             event = event || window.event;
             event.stopPropagation();
             //获取当前li下标            
