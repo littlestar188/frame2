@@ -1,0 +1,33 @@
+/*自适应微调*/
+/* top_nav */
+@media (max-width:769px){
+	#top_profile .personal_wrapper{
+		right:10px;
+		width:100%;
+	} 
+	#menu1{
+		right:-10px;
+		width:100%;
+	}
+}
+@media (min-width:768px){
+	#top_firstNav>li{
+		width:120px;
+		text-align:center;
+	}
+	#top_profile>li>a{
+		text-align:center;
+	}
+	#top_profile .personal_wrapper{
+		right:8px;
+	}
+	#menu1{
+		right:10px;
+	}
+}
+
+@media (min-width:768px) and (max-width:857px){
+	.nav_menu .col-sm-3{
+		width:24%;
+	}
+}

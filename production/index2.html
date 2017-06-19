@@ -20,6 +20,7 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="./css/nav_top.css" rel="stylesheet" >
   </head>
   <style>
     .show{
@@ -35,7 +36,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>HadLinks</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -110,18 +111,18 @@
         </div>
 
         <!-- top navigation -->
-        <div class="top_nav">
+        <div class="top_nav" id="top_nav">
           <div class="nav_menu">
             <nav>
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
               <!-- /.左侧主导航栏 -->
-              <ul class="nav navbar-nav left col-md-9 col-sm-8 col-xs-12" id="top_firstNav">
+              <ul class="nav navbar-nav left col-lg-9 col-md-9 col-sm-8 col-xs-12" id="top_firstNav">
               <!-- /. -->
-                <li class="col-sm-3 col-xs-3">
+                <li class="col-md-3 col-sm-3 col-xs-3">
                   <a href="./index2.html" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   首页
+                   首<span style="visibility:hidden">首页</span>页
                     <!-- <span class=" fa fa-angle-down"></span> -->
                   </a>
                   <!-- <ul class="dropdown-menu dropdown-usermenu">
@@ -138,21 +139,21 @@
                   </ul> -->
                 </li>
                 <!-- /. -->
-                <li class="col-sm-3 col-xs-3">
+                <li class="col-md-3 col-sm-3 col-xs-3">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                    设备管理
                     <span class=" fa fa-angle-down"></span>
                   </a>
                 </li>
                 <!-- /. -->
-                <li class="col-sm-3 col-xs-3">
+                <li class="col-md-3 col-sm-3 col-xs-3">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                   设备故障
                     <span class=" fa fa-angle-down"></span>
                   </a>
                 </li>
                 <!-- /. -->
-                <li class="col-sm-3 col-xs-3">
+                <li class="col-md-3 col-sm-3 col-xs-3">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                   系统管理
                     <span class=" fa fa-angle-down"></span>
@@ -160,15 +161,15 @@
                 </li>
               </ul>
               <!-- /.右侧个人导航 -->
-              <ul class="nav navbar-nav right col-sm-3 col-xs-12">
+              <ul class="nav navbar-nav right col-lg-2 col-md-2 col-sm-3 col-xs-12" id="top_profile">
                 <li class="col-sm-8 col-xs-6">
                   
                    
-                  <a href="javascript:;" class="col-sm-12 col-xs-4 user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      John Doe
+                  <a href="javascript:;" class="col-sm-12 col-xs-12 user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                      admin
                       <span class=" fa fa-angle-down"></span>
                   </a>
-                  <ul class="col-xs-2 dropdown-menu dropdown-usermenu pull-right ">
+                  <ul class="col-xs-2 dropdown-menu dropdown-usermenu pull-right personal_wrapper">
                       <li><a href="javascript:;"> 个人中心</a></li>
                       <li>
                           <a href="javascript:;">
@@ -182,7 +183,7 @@
                 </li>
 
                 <li role="presentation" class="col-sm-4 col-xs-6 dropdown">
-                  <a href="javascript:;" class="col-xs-12 dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
                     <span class="badge bg-green">6</span>
                   </a>

@@ -1,12 +1,20 @@
 var index = {
 	firstNav:$("#top_firstNav"),
 	init:function(){
+        this.topNav();
 		this.leftChildnav();
 		this.rightNav();
 	},
 	render:function(){
 
 	},
+    topNav:function(){
+       // $('.nav_menu>nav').load('./layout/top_nav.html',function(){
+
+       //  });
+       
+        
+    },
 	leftChildnav:function(){
 		var that = this;
 		var liLength = this.firstNav.find('li').length;	
