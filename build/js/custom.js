@@ -114,6 +114,7 @@ $MENU_TOGGLE.on('click', function() {
 	$BODY.toggleClass('nav-md nav-sm');
 
 	setContentHeight();
+
 });
 
 	// check active menu
