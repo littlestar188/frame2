@@ -9,7 +9,7 @@ var index = {
         //加载页脚
         $('#footer').load('./layout/footer.html',function(){});
         //实现下拉菜单
-        $('#sidebar-menu').load('./layout/side_menu.html',function(){
+        $('#sidebar-menu').load('./layout/side_menu3.html',function(){
             init_sidebar();
         })    
         
@@ -29,7 +29,7 @@ var index = {
     // 头部第一级导航
     topNav:function(){
         var that = this;
-      $('#navigation').load('./layout/top_nav.html',function(){
+      $('#navigation').load('./layout/top_nav3.html',function(){
             that.leftChildnav();
             that.rightNav();
      });    
