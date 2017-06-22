@@ -15,9 +15,9 @@ var index = {
         
         this.topNav();
         this.tileStats(); 
-        this.lineChart(); 
+        this.barChart(); 
         this.typeChart();
-        //this.messageList()
+        this.messageList()
         //判断路径名 显示/隐藏当前页面左边子菜单的    
         var pathName = location.pathname.split('/');
         var pagename = pathName[pathName.length-1].split('.')[0];
@@ -158,15 +158,14 @@ var index = {
                      
     },
     /*
-    *  创建echart
-    *  @param elem   标签id元素
-    *  @param height 图标高度    
+    *  创建bar echart
+    *  @param elemId   标签id元素   
     */
-    lineChart:function(){
+    barChart:function(){
         var that = this;
-
+        
         $.ajax({
-            url:"./json/echartData/echratData.json",
+            url:"./json/echartData/echratData-new.json",
             //url:'/manage/chart/stock/',
             //type:'post',
             cache: false,
@@ -174,99 +173,124 @@ var index = {
             //data:type
             success:function(data){
                 console.log(data)
-                // 基于准备好的dom，初始化echarts实例                
-                var stockChart = echarts.init(document.getElementById('stock-chart'));
-                // var revenueChart = echarts.init(document.getElementById('revenue-chart'));
-                option = {
-                    color: ['#1f77b4','#009fa8'],
-                    tooltip : {
-                        trigger: 'axis',
-                        axisPointer: {
-                            type:'line'
-                        }
-                    },
-                     toolbox: {
-                         //itemSize:11,
-                         feature: {
-                             saveAsImage: {show:true},
-                             magicType : {show: true, type: ['line','bar', 'stack','tiled']}
-                         },
-                        right:'4%'
-                     },
-                    grid: {
-                        left: '3%',
-                        right: '4%',
-                        bottom: '3%',
-                        containLabel: true
-                    },
-                    legend: {
-                        data:['入库','出库']
-                    },
-                    xAxis : [
-                        {
-                            type : 'category',
-                            data :data.xAxis
-                        }
-                    ],
-                    yAxis: [
-                        {
-                            type: 'value'
-
-                        }
-                    ],
-                    series: [
-                        {
-                            name:'入库',
-                            type:'bar',
-                            label: {
-                                normal: {
-                                    show: true,
-                                    position: 'top'
-                                }
-                            },
-                            data:data.inStockAxis
-                        },
-                        {
-                             name:'出库',
-                             type:'bar',
-                             label: {
-                                    normal: {
-                                        show: true,
-                                        position: 'top'
-                                    }
-                                },
-                             data:data.outStockAxis
-                        }
-                    ]
-                };
-                console.log(option)
-                // 使用刚指定的配置项和数据显示图表。
-                // stockChart.setOption(option);
-                stockChart.setOption(option);
-                 //resize
-                that.watchEchart([stockChart])
-
+                that.barCallback('stock-chart',data);
             },
             error:function(){
                 console.log('echart数据获取的后台出错')
             }
         });   
     },
+    /*
+    *  创建bar echart
+    *  @param  elemId   标签id元素
+    *  @param  data     
+    */
+    barCallback:function(elemId,data){
+        var barChart = echarts.init(document.getElementById(elemId));
+        var object = arrayItems(data,"bar");
+        barOption = {
+            color: ['#1f77b4','#009fa8'],
+            tooltip : {
+                trigger: 'axis',
+                axisPointer: {
+                    type:'line'
+                }
+            },
+             toolbox: {
+                //itemSize:11,                
+                feature: {
+                    dataZoom:{show:true},
+                    saveAsImage: {show:true},
+                    magicType : {show: true, type: ['line','bar', 'stack','tiled']}
+                },
+                right:'4%'
+             },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            legend: {
+                data:object.legend
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data :data.xAxis
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+
+                }
+            ],
+            series: object.series//[
+                // {
+                //     name:data.legend[0],
+                //     type:'bar',
+                //     markPoint : {
+                //        data : [
+                //            {type : 'max', name: '最大值'},
+                //            {type : 'min', name: '最小值'}
+                //        ]
+                //     },
+                //     label: {
+                //         normal: {
+                //             show: true,
+                //             position: 'top'
+                //         }
+                //     },
+                //     data:data.inStockAxis
+                // },
+                // {
+                //      name:data.legend[1],
+                //      type:'bar',
+                //      markPoint : {
+                //         data : [
+                //             {type : 'max', name: '最大值'},
+                //             {type : 'min', name: '最小值'}
+                //         ]
+                //      },
+                //      label: {
+                //         normal: {
+                //             show: true,
+                //             position: 'top'
+                //         }
+                //     },
+                //     data:data.outStockAxis
+                // }
+            // ]
+        };
+        //console.log(arrayItems(data))
+        console.log(barOption)
+        // 使用刚指定的配置项和数据显示图表。
+        // barChart.setOption(barOption);
+        barChart.setOption(barOption);
+         //resize
+        this.watchEchart([barChart])
+    },
     typeChart:function(){
-        var pieOption = {
+        var that = this;
+         var pieOption = {
             chartData:[]
         }
         var typeChart = echarts.init(document.getElementById('type-chart'));
         
         var typeOption = {
-                color:[],
+                color:['#009fa8'],
                 title: {
-                    text: '设备型号',
+                    text: '设备型号库存',
                     x:'center'
                 },
                 tooltip: {
-                    trigger: 'item'
-                    //,formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    //trigger: 'item',
+                    trigger: 'axis',
+                    axisPointer: {
+                        type:'line'
+                    }
+                    
                 },
                 toolbox: {
                          //itemSize:11,
@@ -275,12 +299,11 @@ var index = {
                             myTool:{
                                 show:true,
                                 title:'转换为饼状图',
-                                icon:'image://http://192.168.0.40:80/frame/self/resource/pie2.svg',//后缀只能是svg否则失真
+                                icon:'image://http://127.0.0.1:80/frame/self/resource/pie2.svg',//后缀只能是svg否则失真
                                 //点击重绘成饼状图
                                 onclick:function(){
                                     
-                                    typeChart.clear()
-                                     
+                                    typeChart.clear();     
                                     index.redrawPie(typeChart,option,pieOption.chartData);
                                     
                                 }
@@ -295,7 +318,7 @@ var index = {
                 xAxis : [
                     {
                         type : 'category',
-                        data :['cc','xx','zz']
+                        data :[]
                     }
                 ],
                 yAxis: [
@@ -308,27 +331,28 @@ var index = {
                     {
                         name:'设备类型',
                         type:'bar',
-                        // markPoint : {
-                        //    data : [
-                        //        {type : 'max', name: '最大值'},
-                        //        {type : 'min', name: '最小值'}
-                        //    ]
-                        // },
-                        // label: {
-                        //     normal: {
-                        //         show: false,
-                        //         position: 'center'
-                        //     },
-                        //     emphasis: {
-                        //         show: true,
-                        //         textStyle: {
-                        //             fontSize: '20',
-                        //             fontWeight: 'bold'
-                        //         }
-                        //     }
-                        // }, 
-                        data:[1,2,3]
-                        // data:[1,2,3,4,5,6,7,8,9]
+                       // barWidth: '30%',
+                        markPoint : {
+                           data : [
+                               {type : 'max', name: '最大值'},
+                               {type : 'min', name: '最小值'}
+                           ]
+                        },
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '20',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        }, 
+                        data:[]
+                        
                     }
                    
                 ]
@@ -342,20 +366,14 @@ var index = {
             //data:type
             success:function(data){
                 console.log(data)
-        
                 for(var i in data){
-                   // var test = JSON.parse('{"value:"'+data[i]+',"name":'+i+'}');
-                   // console.log(test)
 
                    var series = {"value":data[i],"name":i};
                    pieOption.chartData.push(series);
+                }
 
-                  // typeOption.series[0].data.push(data[i]);
-                   //typeOption.xAxis[0].data.push(i);
-                   typeOption.legend.data.push(i)
-               }
-               console.log( typeOption.xAxis[0].data,typeOption.series[0].data)
-               typeChart.setOption(typeOption); 
+                that.typeCallback(typeChart,typeOption,data);
+                
             },
      
             error:function(){
@@ -364,8 +382,19 @@ var index = {
         })
     },
     //typeChart callback
-    typeCallback:function(){
-       
+    typeCallback:function(chart,chartOption,data){
+        for(var i in data){
+
+           // var series = {"value":data[i],"name":i};
+           // pieOption.chartData.push(series);
+
+           chartOption.series[0].data.push(data[i]);
+           chartOption.xAxis[0].data.push(i);
+           chartOption.legend.data.push(i)
+           
+       }
+       console.log( chartOption.xAxis[0].data,chartOption.series[0].data)
+       chart.setOption(chartOption); 
     },
     /*
     * 转换成饼状图
@@ -391,7 +420,7 @@ var index = {
                     myTool: {
                         show: true,
                         title: '转换为饼状图',
-                        icon: 'image://http://192.168.0.40:80/frame/self/resource/pie2.svg',//后缀只能是svg否则失真
+                        icon: 'image://http://127.0.0.1:80/frame/self/resource/pie2.svg',//后缀只能是svg否则失真
                         //点击重绘成饼状图
                         onclick: function () {
                             console.log(data)
@@ -402,7 +431,7 @@ var index = {
                     mytool2:{
                         show: true,
                         title: '转换为柱状图',
-                        icon: 'image://http://192.168.0.40:80/frame/self/resource/bar.svg',//后缀只能是svg否则失真
+                        icon: 'image://http://127.0.0.1:80/frame/self/resource/bar.svg',//后缀只能是svg否则失真
                         //点击重绘成饼状图
                         onclick: function () {
                             chart.clear();
@@ -463,7 +492,7 @@ var index = {
     messageList:function(){
         var that = this;
         $.ajax({
-            url:"./json/tileList.json",
+            url:"./json/stock.json",
            // cache: false,
             dataType: 'json',
             success:function(data){
@@ -471,7 +500,7 @@ var index = {
                 that.messageCallback(data);
             },
             error:function(){
-                console.log("message的获取数据后台错误")
+                console.log("message的获取数据后台错误");
             }
         })    
         
@@ -479,15 +508,99 @@ var index = {
     //设备信息列表 回调函数
     messageCallback:function(data){
         $('.message_list .list-unstyled').find('li.media .media-body').each(function(i){
-            var html =  '<h4>'+data[i].number+' </h4>'
+            //内容
+            var html = '<h4>'+data[i].number+' </h4>'
                         + '<p> <small>'+data[i].name+'</small></p>'
-             $(this).html(html)         
-            //console.log($(this).html(html))
-
+            $(this).html(html)         
+            //console.log(data[i].number)
+            //时间
+            var year = data[i].time.split('-')[0];
+            var month = zero(data[i].time.split('-')[1]);
+            var week = data[i].time.split('-')[2];
+            var timeLabel = '<a class="pull-left date">'
+                            +'<p class="month">'+month+'月</p>'
+                           + '<p class="day">'+week+'</p>'
+                        +'</a>'
+            $(this).parent('li.media.event').prepend(timeLabel) ;           
         })
     }
+    
+ 
 }
 
 $(function(){
     index.init();
 })
+
+/*时间字符串 去零处理*/
+function zero(string){
+    string = string.replace(/^0/,'');
+        return string;
+}
+/*  
+* 创建趋势图的series
+*/
+function CreateSeriesItem(name,type,data){
+    this.name = name;
+    this.type = type;
+    this.data = data;
+    this.label = {
+            normal: {
+                show: true,
+                position: 'top'
+            }
+    };
+    this.markPoint = {
+            data : [
+                {type : 'max', name: '最大值'},
+                {type : 'min', name: '最小值'}
+            ]
+     };
+}
+function SeriesItem(){
+    CreateSeriesItem.apply(this,arguments);
+}
+SeriesItem.prototype = new CreateSeriesItem();
+SeriesItem.prototype.constructor = SeriesItem;
+
+/*
+*  @param data 后台数据
+*  @param type 图表类型 line/bar
+*/
+function arrayItems(data,type){
+     var series = [],
+         legend = [];
+
+     //模拟后台数据 data
+    //  var data = {
+    //     "xAxis": ["2017-06-01 13:00:00","2017-06-02"],
+    //     "inStock": {
+    //         "name":"入库",
+    //         "data":[ "10","12"]
+    //     },
+    //     "outStock": {
+    //         "name":"出库",
+    //         "data":[ "11","2"]   
+    //     }
+    // }
+    type = type.indexOf("line") !=-1 ? "line":"bar";
+    console.log(type)
+
+    for(var key in data){
+        if(key !== "xAxis"){
+            var item = new SeriesItem(data[key].name,type,data[key].data);
+            series.push(item);
+            legend.push(data[key].name);
+        }
+        
+    }
+    var obj = {
+        series:series,
+        legend:legend
+    }
+    return obj;
+}
+
+//console.log(arrayItems())
+
+
