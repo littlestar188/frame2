@@ -1,25 +1,17 @@
-var device = Object.create(index);
+var device = Object.create(publicFun);
 var device = $.extend(device,{
 	init:function(){
-		this.render();
+		//this.render();
+		
+		console.log('init_publicFun') 
 	},
 	render:function(){
-		$('#footer').load('../../layout/footer.html',function(){});
-        //实现下拉菜单
-        $('#sidebar-menu').load('../../layout/side_menu3.html',function(){
-            init_sidebar();
-        })
-        index.topNav(); 
-	},
-	 topNav:function(){
-        var that = this;
-      $('#navigation').load('../../layout/top_nav3.html',function(){
-            index.leftChildnav();
-            index.rightNav();
-     });    
-    }
+		
+        
+	}
 })
 $(function(){
     device.init();
-
+    console.log(device)
+    console.log('init_device')
 })
