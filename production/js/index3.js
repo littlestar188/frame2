@@ -40,13 +40,14 @@ var index = {
         var firstNav = this.navMenu.find('#top_firstNav') ;
         var liLength = firstNav.find('li').length;  
         //console.log(firstNav)
+
         //当主菜单被点击   
         firstNav.on('click','li',function(event){
             event = event || window.event;
             event.stopPropagation();
             //获取当前li下标            
             
-           // console.log('firstNav.length---'+liLength);
+            // console.log('firstNav.length---'+liLength);
            
             var index = $(this).index();
             $('#sidebar-menu').find('.side-menu>li[data-index="'+index+'"]').each(function(){
@@ -525,6 +526,7 @@ var index = {
  
 }
 
+
 $(function(){
     index.init();
 })
@@ -597,6 +599,7 @@ function arrayItems(data,type){
     }
     return obj;
 }
+
 
 //console.log(arrayItems())
 

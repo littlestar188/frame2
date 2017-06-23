@@ -1,9 +1,9 @@
 var publicFun = {
-	 navMenu:$('.nav_menu'),
-	 pathName:window.location.pathname,
-	 navUrl:'../../layout/top_nav3.html',
-	 footerUrl:'../../layout/footer.html',
-	 sidebarUrl:'../../layout/side_menu3.html',
+	navMenu:$('.nav_menu'),
+	pathName:window.location.pathname,
+	navUrl:'../../layout/top_nav3.html',
+	footerUrl:'../../layout/footer.html',
+	sidebarUrl:'../../layout/side_menu3.html',
 	init:function(){
 		this.render();
 		
@@ -12,14 +12,18 @@ var publicFun = {
 		var that = this;
 		//加载头部导航
 		this.topNav();
+		
 		//加载页脚
         $('#footer').load(this.footerUrl,function(){});
         //实现下拉菜单
         $('#sidebar-menu').load(this.sidebarUrl,function(){
         	//当前页面不是index 则修改链接属性
-        	 if(that.pathName.indexOf("index") == -1){
+        	var pageName = that.currentPageName();
+
+        	if(that.pathName.indexOf("index") == -1){
+
 	    		var $secondNav = $(this).find('.menu_section>.side-menu>li>a');
-	    		
+
 	    		$secondNav.each(function(){
 
     				var oldHref = $(this).attr('href');
@@ -29,9 +33,16 @@ var publicFun = {
     				newHref = newHref.replace(reg2,'');
     				$(this).attr('href',newHref)
     				//console.log(oldHref,newHref)
+
+    				//显示当前页面对应的二、三级导航
+    				if(newHref.indexOf(pageName) !== -1){
+    					$(this).parent().removeClass('hide');
+    					$(this).parent().siblings().addClass('hide');
+					}
 	    		})
-	    		console.log($(this),$secondNav)
-	    	} 
+	    		//console.log($(this),$secondNav)
+	    	}
+	    	//二级菜单下拉效果 
             init_sidebar();
         })
 	},
@@ -49,9 +60,16 @@ var publicFun = {
 		});
 		   
 	},
-	//显示当前页面对应的二、三级导航
-	currentLeftChildnav:function(){
+	//获取当前页面名
+	currentPageName:function(){
+				
+		var lastPathName = this.pathName.split('/');
+		lastPathName = lastPathName[lastPathName.length-1];
 
+		var pageName = lastPathName.split('.');
+		pageName = pageName[0];
+
+		return pageName;		
 	},
 	// 左边第二、三级导航
 	leftChildnav:function(){
