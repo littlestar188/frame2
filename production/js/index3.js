@@ -30,12 +30,49 @@ var index = {
     topNav:function(){
         var that = this;
       $('#navigation').load('./layout/top_nav3.html',function(){
-            that.leftChildnav();
+            that.topNavContent();
+            that.sideBar();
             that.rightNav();
      });    
     },
+    topNavContent:function(){   
+        var that = this;
+        $.ajax({
+            url:'http://127.0.0.1:80/frame2/production/json/listMenu.json',
+            stype:"get",
+            //url:'/manage/menu/leftTree',
+            //type:'post',
+            cache:true,
+            dataType:"json",
+            //async : false,
+            success:function(data){
+                console.log('初始化导航-----')
+                console.log(data);
+                var data = data.data;
+                that.navData = data;
+                var str = "";
+                for(var key=0;key<data.length;key++){
+                    (function(i){
+                        str= '<li class="col-lg-2 col-md-3 col-sm-3 col-xs-3">'
+                              +'<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
+                               + data[i].name+'&nbsp;<span class=" fa fa-angle-down"></span>'
+                              +'</a>'
+                           +'</li>';
+                    })(key);
+                    //console.log(str)
+                    $('#top_firstNav').append(str)
+                }
+                
+            },
+            error:function(){
+                console.log('导航获取数据---后台出错');
+            }
+        })
+        
+
+    },
     // 左边第二、三级导航
-    leftChildnav:function(){
+    sideBar:function(){
         var that = this;
         var firstNav = this.navMenu.find('#top_firstNav') ;
         var liLength = firstNav.find('li').length;  
@@ -271,6 +308,7 @@ var index = {
          //resize
         this.watchEchart([barChart])
     },
+   
     typeChart:function(){
         var that = this;
          var pieOption = {
@@ -303,8 +341,9 @@ var index = {
                                 //点击重绘成饼状图
                                 onclick:function(){
                                     
-                                    typeChart.clear();     
-                                    index.redrawPie(typeChart,option,pieOption.chartData);
+                                    typeChart.clear();
+                                    console.log(typeChart,typeOption,pieOption.chartData)     
+                                    index.redrawPie(typeChart,typeOption,pieOption.chartData);
                                     
                                 }
                             },

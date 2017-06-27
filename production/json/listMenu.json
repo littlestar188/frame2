@@ -1,5 +1,30 @@
 {
-	"data":[{
+	"data":[
+		{
+		"name":"设备管理",
+		"link":"http://192.168.0.15:80/frame/pages/forms/device/device.html",
+		"sub_menu":null,
+		"permission":[1,2,3,4]
+		
+	},
+		{
+		"name":"库存管理",
+		"sub_menu":[
+			{
+				"name":"出库",
+				"link":"http://192.168.0.15:80/frame/pages/forms/stock/outstock.html",
+				"permission":[1,3,4],
+				"sub_menu":null
+			},
+			{
+				"name":"入库",
+				"link":"http://192.168.0.15:80/frame/pages/forms/stock/instock.html",
+				"permission":[1,2,3],
+				"sub_menu":null
+			}
+		]
+	 },
+	 {
 		"name":"系统管理",	
 		"sub_menu":[
 			{
@@ -21,33 +46,9 @@
 				"sub_menu":null
 			}
 		]
-	},
+	},	
 	{
-		"name":"库存管理",
-		"sub_menu":[
-			{
-				"name":"出库",
-				"link":"http://192.168.0.15:80/frame/pages/forms/stock/outstock.html",
-				"permission":[1,3,4],
-				"sub_menu":null
-			},
-			{
-				"name":"入库",
-				"link":"http://192.168.0.15:80/frame/pages/forms/stock/instock.html",
-				"permission":[1,2,3],
-				"sub_menu":null
-			}
-		]
-	},
-	{
-		"name":"设备管理",
-		"link":"http://192.168.0.15:80/frame/pages/forms/device/device.html",
-		"sub_menu":null,
-		"permission":[1,2,3,4]
-		
-	},
-	{
-		"name":"消息中心",
+		"name":"消息管理",
 		"permission":[1,2,3,4],
 		"sub_menu":[
 			{

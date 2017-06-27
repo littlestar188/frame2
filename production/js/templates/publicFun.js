@@ -1,5 +1,6 @@
 var publicFun = {
 	navMenu:$('.nav_menu'),
+	navData:{},
 	pathName:window.location.pathname,
 	navUrl:'../../layout/top_nav3.html',
 	footerUrl:'../../layout/footer.html',
@@ -15,8 +16,11 @@ var publicFun = {
 		
 		//加载页脚
         $('#footer').load(this.footerUrl,function(){});
+        
+
         //实现下拉菜单
         $('#sidebar-menu').load(this.sidebarUrl,function(){
+        	
         	//当前页面不是index 则修改链接属性
         	var pageName = that.currentPageName();
 
@@ -25,7 +29,6 @@ var publicFun = {
 	    		var $secondNav = $(this).find('.menu_section>.side-menu>li>a');
 
 	    		$secondNav.each(function(){
-
     				var oldHref = $(this).attr('href');
     				var reg1 = new RegExp(/^(\.)/,'g');
     				var reg2 = new RegExp(/templates\//,'g');
@@ -50,15 +53,62 @@ var publicFun = {
 	topNav:function(){
 	    var that = this; 
 	    $('#navigation').load(this.navUrl,function(){
+	    	
+	    	//加载导航内容
+	    	that.topNavContent();
 	    	//当前页面不是index 则修改首页的链接href属性
 	    	if(that.pathName.indexOf("index") == -1){
 	    		var $indexLink = $(this).find('#top_firstNav>li:first()>a');
 	    		$indexLink.attr('href','../../index3.html');
+	    		//console.log($indexLink)
+	    		
 	    	} 
-	        that.leftChildnav();
+	        that.sideBar();
 	        that.rightNav();
 		});
 		   
+	},
+	//根据后台数据 加载头部导航内容
+	topNavContent:function(){	
+		var that = this;
+		$.ajax({
+			url:'http://127.0.0.1:80/frame2/production/json/listMenu.json',
+			stype:"get",
+			//url:'/manage/menu/leftTree',
+			//type:'post',
+			cache:true,
+			dataType:"json",
+			async : false,
+			success:function(data){
+				console.log('初始化导航-----')
+				console.log(data);
+				var data = data.data;
+				//将获取到的数据定义成全局 减少在加载side_menu的内容时的http再次请求
+				that.navData = data;
+
+				var str = "";
+				for(var key=0;key<data.length;key++){
+					(function(i){
+						str= '<li class="col-lg-2 col-md-3 col-sm-3 col-xs-3">'
+						      +'<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
+						       + data[i].name+'&nbsp;<span class=" fa fa-angle-down"></span>'
+						      +'</a>'
+						   +'</li>';
+						// that.sideBar_content(i,data[i])
+					})(key);
+					//console.log(str)
+					$('#top_firstNav').append(str)
+					//内容加载
+        			
+				}
+				
+			},
+			error:function(){
+				console.log('导航获取数据---后台出错');
+			}
+		})
+		
+
 	},
 	//获取当前页面名
 	currentPageName:function(){
@@ -72,12 +122,12 @@ var publicFun = {
 		return pageName;		
 	},
 	// 左边第二、三级导航
-	leftChildnav:function(){
+	sideBar:function(){
 	    var that = this;
 	    var firstNav = this.navMenu.find('#top_firstNav') ;
 	    var liLength = firstNav.find('li').length;  
 	    //console.log(firstNav)
-
+	    
 	    //当主菜单被点击   
 	    firstNav.on('click','li',function(event){
 	        event = event || window.event;
@@ -101,6 +151,29 @@ var publicFun = {
 
 
 	    // })
+	},
+	//有bug
+	sideBar_content:function(i,data){
+		//listMenu.json缓存的数据 this.navData
+	
+		var a = $('#sidebar-menu').find('.side-menu');
+		var str = "";
+		
+		if(data.sub_menu !== null){					
+			for(var key2=0;key2<data.sub_menu.length;key2++){
+				(function(j){
+					str= '<li class="hide" data-index="'+(i+1)+'">'
+						+'<a href="./templates/device/device.html">'
+							+data.sub_menu[j].name
+						+'</a>'
+					 +' </li>'
+				
+				})(key2);
+			}
+			
+		}
+		console.log(str)	    
+
 	},
 	// 右边内容区 选项卡的导航
 	rightNav:function(){
@@ -145,6 +218,9 @@ var publicFun = {
 
 	}
 }
+
+
+
 
 $(function(){
 	publicFun.init();

@@ -7,10 +7,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
-			device
+			deviceManage
 		</title>
 		<!-- Bootstrap -->
 		<link href="../../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<!-- bootstrap-table -->
+		<link href="../../../vendors/bootstrap-table/css/bootstrap-table.css" rel="stylesheet">
 		<!-- Font Awesome -->
 		<link href="../../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<!-- NProgress -->
@@ -22,7 +24,11 @@
 		<link href="../../css/nav_top.css" rel="stylesheet" >
 	</head>
 	<style>
-		.show{ display: block; } .hide{ display: none; }
+		.show{ display: block; } 
+		.hide{ display: none; }
+		.w120{width:120px;}
+		.mr10{margin-right:10px;}
+		.ml10{margin-left:10px;}
 	</style>
 	<body class="nav-md">
 		<div class="container body">
@@ -97,49 +103,55 @@
 							<form class="form-inline row" style="padding-bottom:5px">
 								<!-- col -->
 								<div class="col-lg-1 control-group">
-									<div class="controls">
-										<select class="form-control" style="width: 120px">
-											<option>
-												全部
-											</option>
-											<option>
-												离心机
-											</option>
-											<option>
-												空压机
-											</option>
-										</select>
-									</div>
-								</div>
-								<!-- col -->
-								<div class="col-lg-1 control-group">
-									<div class="controls">
-										<input type="text" style="width: 120px" class="form-control" placeholder="编码">
-									</div>
+									<select class="form-control" name="customer" id="b_customer">
+					                  <option value="">设备归属</option>
+					                  <option value="光明">光明</option>
+					                  <option value="蒙牛">蒙牛</option>
+					                  <option value="三全">三全</option>
+					                  <option value="伊利">伊利</option>
+					                </select>
 								</div>
 								<!-- -->
 								<div class="col-lg-1 control-group">
-									<div class="controls">
-										<input type="text" style="width: 120px" class="form-control" placeholder="类别">
-									</div>
+									<select class="form-control"  id="deviceType" name="model">
+						               <option value="">设备型号</option>
+						               <option value="RXYE-R9">RXYE-R9</option>
+						               <option value="SWF001">SWF001</option>
+						               <option value="RXYE-HD">RXYE-HD</option>
+						             </select>
 								</div>
 								<!-- -->
 								<div class="col-lg-1 control-group">
-									<div class="controls">
-										<input type="text" style="width: 120px" class="form-control" placeholder="型号">
-									</div>
+									
+									<select class="form-control"  name="online" id="online">
+						                <option value="">在线状态</option>
+						                <option value="true" >在线</option>
+						                <option value="false" >离线</option>
+						            </select>
+									
 								</div>
 								<!-- -->
 								<div class="col-lg-1 control-group">
-									<div class="controls">
-										<input type="text" style="width: 120px" class="form-control" placeholder="SIM卡号">
-									</div>
+									
+									<select class="form-control"  name="status" id="status">
+						                <option value="">运行状态</option>
+						                <option value="0" >正常</option>
+						                <option value="1" >故障</option>
+						            </select>
+									
 								</div>
 								<!-- -->
-								<div class="col-lg-1 control-group">
-									<div class="controls">
-										<input type="text" style="width: 120px" class="form-control" placeholder="用户">
-									</div>
+								<div class="col-lg-2 control-group">
+									
+									<select class="form-control" id="fee" name="fee">
+										<option value="">消费方式</option>
+						                <option value="包半年">包半年</option>
+						                <option value="包年">包年</option>
+						                <option value="2000流量包">2000流量包</option>
+						                <option value="包1年">包1年</option>
+						                <option value="体验产品服务费">体验产品服务费</option>
+									</select>
+																
 								</div>
 								<!-- col -->
 								<div class="col-lg-1 control-group">
@@ -151,8 +163,8 @@
 							</form>
 							<!-- table -->
 							<div class="table-responsive">
-								<table class="table table-striped jambo_table bulk_action">
-									<thead>
+								<table class="table table-striped jambo_table bulk_action"  id="device_table">
+									<!-- <thead>
 										<tr class="headings">
 											<th>
 												<input type="checkbox" id="check-all" class="flat">
@@ -286,8 +298,142 @@
 												</a>
 											</td>
 										</tr>
-									</tbody>
+									</tbody> -->
 								</table>
+
+								<!-- 点击后的模态框 -->
+								<div class="modal fade bs-example-modal-md" id="deviceModal" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog modal-md">
+								    <div class="modal-content" >
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal"
+								                aria-hidden="true">×</button>
+								        <h4 class="modal-title" id="deviceModalLabel" style="font-family:'微软雅黑'"></h4>
+								      </div>
+								      <div class="modal-body">
+								        <!--modal-body.header-->
+
+								        <!--modal-body.body-->
+								        <div class="list_table">
+								          <!-- 参数设置 -->
+
+								          <div class="list_setting row" style="display: none">
+								            <div class="seting_wrapper col-sm-6 col-sm-offset-3">
+								              <!--/.-->
+								              <div class="">
+								                <div class="form-group">
+								                  <label for="minTemp" class="control-label">温度下限(℃)</label>
+								                  <input type="text" class="form-control" id="minTemp" name="minTemp" value="-40.0">
+								                </div>
+								              </div>
+								              <!--/.-->
+								              <div class="">
+								                <div class="form-group">
+								                  <label for="maxTemp" class="control-label">温度上限(℃)</label>
+
+								                  <input type="text" class="form-control" id="maxTemp" name="minTemp" value="80.0">
+								                </div>
+								              </div>
+								              <!--/.-->
+								              <div class="">
+								                <div class="form-group">
+								                  <label for="correctTemp" class="control-label">修正值(℃)</label>
+								                  <input type="text" class="form-control" id="correctTemp" name="minTemp" value="0.0">
+								                </div>
+								              </div>
+								              <!--/.warning-->
+								              <div class="warning_switch form-group">
+								                <div class="form-group">
+								                  <label class="control-label" for="active">报警推送</label>
+								                  <input type="hidden" name="active" id="active" value="开">
+								                  <button type="button" class="btn_on" id="alarmBtn"></button>
+								                </div>
+								              </div>
+
+								            </div>
+
+								          </div>
+								        </div>
+								        <div class="modal-footer">
+								          <div class="">
+								            <button type="button" class="btn btn-primary" id="btn-role-save" data-loading-text="提交中...">保存</button>
+								          </div>
+								        </div>
+
+								      </div>
+
+								  </div>
+
+								</div>
+							</div>
+							<!-- modal -->
+							<div class="modal fade bs-example-modal-md" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-md">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												×
+											</button>
+											<h4 class="modal-title" id="roleModalLabel" style="font-family:'微软雅黑'">
+											</h4>
+										</div>
+										<div class="modal-body">
+											<div id="search-wrap" style="display: none">
+												<input type="text" placeholder="角色名" class="role-input" data-id>
+												<span class="correct" style="display: none">
+													<i class="fa fa-check" style="color:green;">
+													</i>
+												</span>
+												<span class="error" style="display: none">
+													<i class="fa fa-close" style="color:#c33;">
+													</i>
+												</span>
+												<div class="checkAll">
+													<input type="checkbox" id="all">
+													<label for="all">
+														全选
+													</label>
+												</div>
+											</div>
+											<div id="list_table">
+												<!-- 新增 -->
+												<ul class="list_choice" style="display:none">
+													<div class="modal-footer">
+														<button type="button" class="btn btn-primary" id="btn-role-save" data-loading-text="提交中...">
+															保存
+														</button>
+													</div>
+												</ul>
+												<!-- 查看 -->
+												<div class="list_person" style="display: none">
+													<div class="row">
+														<div class="col-xs-2">
+														</div>
+														<div class="col-xs-8 table-responsive">
+															<table class="table table-striped">
+																<tbody>
+																</tbody>
+															</table>
+														</div>
+														<div class="col-xs-2">
+														</div>
+													</div>
+												</div>
+												<!-- 修改 -->
+												<ul class="list_edit">
+													<div class="modal-footer">
+														<button type="button" class="btn btn-primary" id="btn-edit-save" data-loading-text="提交中...">
+															保存
+														</button>
+														<button type="button" class="btn btn-primary" id="btn-role-cancle">
+															取消
+														</button>
+													</div>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 							<!-- option buttons -->
 							<div class="options">
@@ -312,8 +458,6 @@
 								</div>
 							</div>
 							<!-- -->
-							<div class="clearfix">
-							</div>
 							<div class="clearfix">
 							</div>
 						</div>
@@ -342,6 +486,9 @@
 		</script>
 		<!-- iCheck -->
 		<script src="../../../vendors/iCheck/icheck.min.js">
+		</script>
+		<!-- bootstrap-table -->
+		<script src="../../../vendors/bootstrap-table/js/bootstrap-table.js">
 		</script>
 		<!-- ECharts -->
 		<script src="../../../vendors/echarts/dist/echarts.min.js">
