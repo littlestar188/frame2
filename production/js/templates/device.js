@@ -90,7 +90,8 @@ var device = $.extend(device,{
 		               }
 		           },
 		           {field : 'id',title : '操作',align : 'center',width : 100,valign : 'middle',
-		               formatter : function(value,row) {		               return device.optShow(value);
+		               formatter : function(value,row) {		               
+		               	return device.optShow(value);
 		               }
 		           }
 		       ]
@@ -229,13 +230,13 @@ var device = $.extend(device,{
 		var strMenu = "";
 		console.log(roleId)
 		$.ajax({
-			url:'/manage/role/getOneRole',
+			//url:'/manage/role/getOneRole',
 			type:'get',
-			//url:"../../self/json/getOneRole.json",
+			url:"../../json/role/getOneRole.json",
 			cache: "false",
-			data:{
-				"roleId":roleId	
-			},
+			// data:{
+			// 	"roleId":roleId	
+			// },
 			success:function(res){
 				console.log('点击【详情】获取对应roleId个人信息--------')
 				console.log(res)					
@@ -291,13 +292,13 @@ var device = $.extend(device,{
 	watchRole:function(){
 		var that = this;
 		//初始化				
-		$("#roleModalLabel").html("查看");
+		$("#deviceModalLabel").html("查看");
 		$('#search-wrap').hide();
 		$('#list_table .list_choice').hide();
 		$('#list_table .list_edit').hide();
 		$('#list_table .list_person').show();
 
-		$('#roleModal').modal({show:true});
+		$('#deviceModal').modal({show:true});
 
 
 	}
