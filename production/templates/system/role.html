@@ -30,7 +30,13 @@
 	</head>
 	<style>
 		.show{ display: block; } 
-		.hide{ display: none; } 
+		.hide{ display: none; }
+		/*改变bootstrap-table 右下角分页颜色*/
+		.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+			background-color: #26B99A;
+    		border-color: #26B99A;
+			
+		} 
 		.ztreeWrapper{ -webkit-animation-duration:500ms;-moz-animation-duration:500ms; } 
 		.ztreeWrapper .ztree_title{ 
 			font-size:16px; 
@@ -50,8 +56,12 @@
 			top: 9px; 
 			right: 2px; 
 		} 
+		/*避开custom.min.css的button样式对ztree>li>.button的影响*/
+		.ztreeWrapper .ztree .button{
+			padding:0;
+		}
 		.ztreeWrapper .ztree,.ztreeWrapper .btnWrapper{
-			margin-top:15px; 
+			-margin-top:15px; 
 		}
 	</style>
 	<body class="nav-md">
@@ -120,8 +130,8 @@
 				<div class="right_col" role="main">
 					<div class="x_panel">
 						<div class="x_content">
-							<!-- table-conten-left -->
 							<div class="table_wrapper">
+								<!-- table-conten-left -->
 								<!-- search -->
 								<form class="form-inline row" style="padding-bottom:5px">
 									<!-- col -->
@@ -139,145 +149,10 @@
 									<!-- col end -->
 								</form>
 								<!-- table -->
-								<div class="table-responsive">
-									<table class="table table-striped jambo_table bulk_action" id="role_table">
-										<!-- <thead>
-										<tr class="headings">
-										<th>
-										<input type="checkbox" id="check-all" class="flat">
-										</th>
-										<th class="column-title">
-										序号
-										</th>
-										<th class="column-title">
-										类型
-										</th>
-										<th class="column-title">
-										型号
-										</th>
-										<th class="column-title">
-										设备序列号
-										</th>
-										<th class="column-title">
-										IMEI号
-										</th>
-										<th class="column-title">
-										SIM卡号
-										</th>
-										<th class="column-title">
-										安装日期
-										</th>
-										<th class="column-title">
-										设备状态
-										</th>
-										<th class="column-title">
-										在/离线
-										</th>
-										<th class="column-title">
-										操作
-										</th>
-										<th class="bulk-actions" colspan="10">
-										<a class="antoo" style="color:#fff; font-weight:500;">
-										Bulk Actions (
-										<span class="action-cnt">
-										</span>
-										)
-										<i class="fa fa-chevron-down">
-										</i>
-										</a>
-										</th>
-										</tr>
-										</thead>
-										<tbody>
-										<tr class="even pointer">
-										<td class="a-center ">
-										<input type="checkbox" class="flat" name="table_records">
-										</td>
-										<td class=" ">
-										1
-										</td>
-										<td class=" ">
-										离心机
-										</td>
-										<td class=" ">
-										SM001
-										</td>
-										<td class=" ">
-										121000210
-										</td>
-										<td class=" ">
-										121000210
-										</td>
-										<td class=" ">
-										121000210
-										</td>
-										<td class=" ">
-										2014/05/18
-										</td>
-										<td class=" ">
-										正常
-										</td>
-										<td class=" ">
-										在线
-										</td>
-										<td class="a-right a-right ">
-										<a href="#" class="btn btn-primary btn-xs">
-										详情
-										</a>
-										<a href="#" class="btn btn-info btn-xs">
-										编辑
-										</a>
-										<a href="#" class="btn btn-danger btn-xs">
-										删除
-										</a>
-										</td>
-										</tr>
-										<tr class="odd pointer">
-										<td class="a-center ">
-										<input type="checkbox" class="flat" name="table_records">
-										</td>
-										<td class=" ">
-										2
-										</td>
-										<td class=" ">
-										压缩机
-										</td>
-										<td class=" ">
-										SM001
-										</td>
-										<td class=" ">
-										121000210
-										</td>
-										<td class=" ">
-										121000210
-										</td>
-										<td class=" ">
-										121000210
-										</td>
-										<td class=" ">
-										2014/05/18
-										</td>
-										<td class=" ">
-										正常
-										</td>
-										<td class=" ">
-										离线
-										</td>
-										<td class="a-right a-right ">
-										<a href="#" class="btn btn-primary btn-xs">
-										详情
-										</a>
-										<a href="#" class="btn btn-info btn-xs">
-										编辑
-										</a>
-										<a href="#" class="btn btn-danger btn-xs">
-										删除
-										</a>
-										</td>
-										</tr>
-										</tbody> -->
-									</table>
-								</div>
+								<table class="table table-striped jambo_table bulk_action table-hover"
+								id="role_table">
+									<!-- 动态创建数据信息 -->
+								</table>
 								<!-- modal -->
 								<div class="modal fade bs-example-modal-md" id="roleModal" tabindex="-1"
 								role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true">
@@ -292,7 +167,7 @@
 											</div>
 											<div class="modal-body">
 												<div id="search-wrap" style="display: none">
-													<input type="text" placeholder="角色名" class="role-input" data-id>
+													<input type="text" placeholder="角色名" class="role-input" data-id="">
 													<span class="correct" style="display: none">
 														<i class="fa fa-check" style="color:green;">
 														</i>
@@ -350,7 +225,9 @@
 								</div>
 								<!-- option buttons -->
 								<div class="options">
-									<div class="form-inline row">
+									<div class="form-inline row" style="
+									/* margin-top: 162px; */
+									">
 										<div class="col-lg-1 col-md-4 control-group">
 											<button type="submit" class="btn btn-success addBtn">
 												角色新增
@@ -370,44 +247,81 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							<!-- ztree-content-right -->
-							<div class="ztreeWrapper col-lg-3 animated" style="display: none;">
-								<div class="x_content">
-									<h3 class="ztree_title">
-										新增
-									</h3>
-									<!-- search -->
-									<div class="inputWrapper">
-										<input type="text" class="form-control ztreeRoleInput" placeholder="角色名称"
-										data-id>
-										<div class="ztreeTip">
-											<span class="correct" style="display:none;color:green">
-												<i class="fa fa-check">
-												</i>
-											</span>
-											<span class="error" style="display:none;color:#c33">
-												<i class="fa fa-close">
-												</i>
-											</span>
-										</div>
-									</div>
-									<!-- permission area -->
-									<div class="ztree" id="treePermission">
-									</div>
-									<!-- option -->
-									<div class="btnWrapper">
-										<div class="btn btn-success col-sm-3 treeSave">
-											保存
-										</div>
-										<div class="btn btn-success col-sm-3 treeCancel">
-											取消
-										</div>
-									</div>
+								
+								<!-- -->
+								<div class="clearfix">
 								</div>
 							</div>
-							<!-- -->
-							<div class="clearfix">
+							<div class="ztreeWrapper animated slideInRight col-lg-3" style="display: none">
+								<h3 class="ztree_title">
+									修改
+								</h3>
+								<!-- search -->
+								<!-- <div class="inputWrapper">
+									<input type="text" class="form-control ztreeRoleInput" placeholder="角色名称"
+									data-id="">
+									<div class="ztreeTip">
+										<span class="correct" style="display:none;color:green">
+											<i class="fa fa-check">
+											</i>
+										</span>
+										<span class="error" style="display:none;color:#c33">
+											<i class="fa fa-close">
+											</i>
+										</span>
+									</div>
+								</div> -->
+								<!-- 查看  -->
+								<div class="table-responsive">
+									<table class="table table-striped jambo_table bulk_action" id="detailWrapper"></table>
+								</div>
+								
+								<!-- 修改 -->
+								<div class="table-responsive">
+									<table class="table table-striped jambo_table bulk_action" id="editWrapper">
+										<tbody>
+											<tr>
+												<td>角色名称</td>
+												<td>
+													<div class="inputWrapper">
+														<input type="text" class="form-control ztreeRoleInput" placeholder=""
+														data-id="">
+														<div class="ztreeTip">
+															<span class="correct" style="display:none;color:green">
+																<i class="fa fa-check">
+																</i>
+															</span>
+															<span class="error" style="display:none;color:#c33">
+																<i class="fa fa-close">
+																</i>
+															</span>
+														</div>
+													</div>
+												</td>												
+											</tr>
+											<!--  -->
+											<tr>
+												<td>菜单权限</td>
+												<td><div class="ztree" id="treePermission" style="overflow-y: scroll;"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- <div class="ztree" id="treePermission" style="
+								overflow-y: scroll;">
+								</div> -->
+
+								<!-- 新增 -->
+								
+								<!-- option -->
+								<div class="btnWrapper">
+									<div class="btn btn-success col-sm-3 treeSave">
+										保存
+									</div>
+									<div class="btn btn-success col-sm-3 treeCancel">
+										取消
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

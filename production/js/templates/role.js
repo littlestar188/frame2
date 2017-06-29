@@ -1,3 +1,9 @@
+var elementObj = {
+	$ztreeWrapper:$('.ztreeWrapper'),
+	$detailWrapper:$('#detailWrapper'),
+	$editWrapper:$('#editWrapper')
+}
+
 var role = Object.create(publicFun);
 var role = $.extend(role,{
 	init:function(){
@@ -107,54 +113,25 @@ var role = $.extend(role,{
 		//监视option 实现某个option功能
 		var roleId="";
 		var modalCon = "";
-		
+		$('#role_table').off('click')
 		$('#role_table').on('click','.btn.btn-xs',function(event){
 			//阻止冒泡
 			window.event? window.event.cancelBubble = true : event.stopPropagation();
 
-			console.log($(this))
+			
 			//console.log($(this).attr('data-id'))
 
 			//判断是否为【详情】
 			if($(this).is('#btn-watch')){
 
 				roleId = $(this).attr('data-id');
-				console.log($(this))
-				modalCon = $(document).find('.list_person .table tbody tr').remove();
-				//console.log(modalCon,modalCon.length)
-				//判断是否存在个人信息内容 不存在则渲染
-				//if(modalCon.length == 0){
-					modalCon.html('');
-					that.oneRole(roleId);
-				//}
-				that.watchRole();
+				that.watchRoleTree(roleId);
 			}
 
 			//判断是否为【修改】
-			// if($(this).is('#btn-edit')){
-
-			// 	roleId = $(this).attr('data-id');
-			// 	modalCon = $(document).find('.list_edit li').remove();
-			// 	//初始化选项显示					
-			// 	that.oneMenu(roleId);
-			// 	that.editRole();
-
-			// 	//修改后
-			// 	setTimeout(that.checkEditRole('/manage/role/updateCheck',roleId),1000);
-			// 	var tableLis = '#list_table .list_edit li';
-			// 	//解绑click事件
-			// 	$('#btn-edit-save').off('click');				 
-		 // 		$('#btn-edit-save').click(function(event){			 			
-		 // 			event.stopPropagation();
-		 // 			that.saveClick(tableLis,'/manage/role/updateRole',roleId);
-		 // 		})
-
-				
-			// }
-			//判断是否是ztree版修改
 			if($(this).is('#btn-edit')){
 
-				that.EditRoleTree();
+				that.editRoleTree();
 			}
 
 			//判断是否为【删除】
@@ -167,12 +144,206 @@ var role = $.extend(role,{
 
 		})
 	},
-	//获取某角色的信息
-	oneRole:function(roleId){
+
+
+	//查看功能 modal template
+	// watchRole:function(){
+	// 	var that = this;
+	// 	//初始化				
+	// 	$("#roleModalLabel").html("查看");
+	// 	$('#search-wrap').hide();
+	// 	$('#list_table .list_choice').hide();
+	// 	$('#list_table .list_edit').hide();
+	// 	$('#list_table .list_person').show();
+
+	// 	$('#roleModal').modal({show:true});
+
+
+	// },
+	//ztree template
+	watchRoleTree:function(roleId){
 		var that = this;
-		var data = "";
-		var strTable = "";
-		var strMenu = "";
+		this.falshZtree('查看');
+		this.oneRole(roleId);
+
+	},
+	addRoleTree:function(){
+		var that = this;
+		$('.addBtn').click(function(event){
+			
+			that.falshZtree('新增');
+			//that.initZtree('../../json/role/listPerMenu.json','get');
+	    	//that.checkRole($('.ztreeRoleInput'),"/manage/role/addCheck");
+	    	//that.ztreeDateSave();	
+			
+		})
+
+	},
+	/*
+	*@pram roleId
+	*/
+	editRoleTree:function(roleId){
+		var that = this;
+		this.falshZtree('修改');
+		//this.initZtree('../../json/role/listPerMenu.json','get',"123456789");
+		$.ajax({
+			url:"../../json/role/listPerMenu.json",
+			type:"get",	
+			cache: "false",
+			data:{
+			"roleId":roleId	
+			},
+			success:function(data){
+				console.log('点击【修改】获取对应permission个人信息--------')
+				console.log(data)						
+				that.initZtree(data,'treePermission')
+			}
+		})
+
+		//$('#watchPermission').hide();	
+	},
+	/*
+	* @param data 
+	* @param eleId  ztreeId
+	*/
+	initZtree:function(data,elemId){
+
+		$('#'+elemId).empty();
+
+		var zNodes = data;
+	    //ajax获取数据 模拟数据
+	    var setting = {
+	   		view:{
+	   			showIcon:false,
+	   			fontCss:{}
+	   		},
+		   	check:{
+		   		enable:true,
+		   		chkboxType :{ "Y" : "ps", "N" : "ps" },
+		   		chkStyle:"checkbox"
+		   	},
+		   	data: {
+				simpleData: {
+					enable: true,
+					idKey: "id",
+					pIdKey: "pId",
+					rootPId: 0
+				}
+			}
+	    };
+
+	    // var ajaxObj = {
+	   	// 	url:ajaxURL,
+	   	// 	type:method,
+	   	// 	dataType:"json",
+	   	// 	async : false,//必写
+	   	// 	success:function(res){
+	   	// 		console.log(res)
+	   	// 		zNodes = res.menus;
+	   	// 		//callback(); 
+	   	// 	}
+	    // }
+	    // var params = {
+	   	// 	data:{"id":id}
+	    // }
+
+	    // if(method == "get"){
+	   	// 	$.ajax(ajaxObj)
+	    // }
+	    // if(method == "post"){
+	   	// 	$.ajax($.extend(ajaxObj,params))
+	    // }
+	   
+	   	//console.log($.extend(ajaxObj,params))
+
+
+	    $.fn.zTree.init($('#'+elemId), setting, zNodes); 
+
+	    var zTreeObj = $.fn.zTree.getZTreeObj(elemId);
+
+	    //必须有延迟才能实现初始化时全部展开
+	    setTimeout(function(){
+	    	zTreeObj.expandAll(true);
+	    },500);			
+	},
+	
+	/*
+		  
+		@param title
+	*/
+	falshZtree:function(title){
+		
+
+		$('.table_wrapper').addClass('col-lg-9');
+		$('.table_wrapper .options').find('.btn:not(:first())').each(function(){
+				//console.log($(this))
+				$(this).css({"margin-left":"0"})
+		})
+		
+
+		$('.ztree_title').html(title);
+		this.showTree(title)
+		// if(title == "查看"){
+			
+		// 	$('#detailWrapper').show();
+		// 	$('#editWrapper').hide();
+			
+		// }
+		// if(title == "修改"){
+			
+		// 	$('#detailWrapper').hide();
+		// 	$('#editWrapper').show();
+			
+		// }
+		$('.ztreeWrapper').removeClass('slideOutRight');		
+		$('.ztreeWrapper').addClass('slideInRight').fadeIn();
+
+		//$(window).resize(function() {
+		 	var rHeight =  $('.right_col').css("min-height");
+		 	zHeight = parseInt(rHeight) - 150 - 67;//150px ztreeWrapper除ztree之外的所有内容高度 67px top_nav高度+margin10
+		 	$('.ztreeWrapper .ztree').css({"height":zHeight+"px"});
+			//console.log(rHeight,zHeight+"px",$('.ztreeWrapper .ztree').css("height"))
+		//});
+		
+		
+		//【取消】恢复全屏样式
+		$('.btnWrapper .treeCancel').click(function(){
+
+			$('.ztreeWrapper').css({"display":"none"});
+
+			$('.table_wrapper').removeClass('col-lg-9');
+			//option
+			$('.table_wrapper .options .delBtn').css({"margin-left":"-36px"})
+			console.log($('.table_wrapper .options .delBtn'))
+			$('.table_wrapper .options .batchBtn').css({"margin-left":"-72px"})
+
+		})
+
+	},
+	showTree:function(title){
+		switch(title){
+			case "查看":
+			title = "detail";
+			break;
+
+			case "修改":
+			title = "edit";
+			break;
+
+			case "新增":
+			title = "add";
+			break;
+		}
+		console.log(title,$('#'+title+'Wrapper'),$('#'+title+'Wrapper').parent().siblings('.table-responsive'))
+		$('#'+title+'Wrapper').show();
+		$('#'+title+'Wrapper').parent().siblings('.table-responsive').hide();
+	},
+		//获取某角色的信息
+	oneRole:function(roleId){
+
+		var that = this;
+		var str = "";
+				
 		console.log(roleId)
 		$.ajax({
 			//url:'/manage/role/getOneRole',
@@ -188,7 +359,7 @@ var role = $.extend(role,{
 				//data = res.data;
 				data = data.rows;
 				//console.log(data.menus);					
-				strTable = '<tr>'
+				str = '<tr>'
                         +'<td>角色ID</td>'
                         +'<td>'+data.id+'</td>'
                       +'</tr>'
@@ -199,33 +370,17 @@ var role = $.extend(role,{
                         +'<td>创建时间</td>'
                         +'<td>'+data.createTime+'</td>'
                       +'</tr>'
-                      +'<tr>'
-                        +'<td>菜单权限</td>'
-                        +'<td class="tree" id="treePermission"></td>'
-                      +'</tr>';            
-                $('.list_person .table>tbody').prepend(strTable);
+                      +'</tr>'
+                       +'<td>菜单权限</td>'
+                        +'<td><div class="ztree" id="watchPermission" style="overflow-y: scroll;"></div></td>'                       
+                      +'</tr>';
 
-                that.initZtree(data.menus);
-                //处理菜单权限 
-                // for(var i = 0;i<data.menus.length;i++){	                	
-                // 	//替换 1 2 3 4 ->增删改查
-                // 	var strPer = data.menus[i].permission.toString();
-                // 	//console.log(strPer)
-                // 	var a = replaceAll(strPer,',',' ');
-                // 	console.log('replace')
-                // 	var b = replaceAll(a,'1','新增');
-                // 	var c = replaceAll(b,'2','删除');
-                // 	var d = replaceAll(c,'3','修改');
-                // 	strPer= replaceAll(d,'4','查看');
-                // 	console.log(strPer)
-                // 	strMenu ='<tr>'
-                // 			   +'<td>'+data.menus[i].name+'&nbsp;&nbsp;&nbsp;&nbsp;</td>'
-                // 			   +'<td>'+strPer+'&nbsp;</td>'
-                // 	         +'</tr>'
-                // 	$('.menu_permission').append(strMenu);
-                	
-
-                // }
+               	$('#detailWrapper').empty();
+                $('#detailWrapper').append(str)
+                
+               
+                that.initZtree(data.menus,'watchPermission');
+                
 
              },
              error:function(){
@@ -233,27 +388,6 @@ var role = $.extend(role,{
              }
 
 		})			
-	},
-	//修改
-	editRole:function(){
-		var that = this;
-
-		//初始化选项
-		//that.oneMenu(roleId);
-		//$('#role_table').on("click","#btn-edit",function(){
-							
-			$("#roleModalLabel").html("修改");
-			//显示角色名称修改框
-			$('#search-wrap').show();				
-			$('#list_table .list_choice').hide();
-            $('#list_table .list_person').hide();
-            $('#list_table .list_edit').show();
-
-          	$('.error').hide();
-			$('.correct').hide();
-
-			$('#roleModal').modal({show:true})
-		//})
 	},
 	checkRole:function(elem,ajaxURL){
 		var that = this;
@@ -349,134 +483,9 @@ var role = $.extend(role,{
 			$('.error i').html(retrunMsg);
 			$('.error').show();
 		}
-	},
-
-	//查看功能
-	watchRole:function(){
-		var that = this;
-		//初始化				
-		$("#roleModalLabel").html("查看");
-		$('#search-wrap').hide();
-		$('#list_table .list_choice').hide();
-		$('#list_table .list_edit').hide();
-		$('#list_table .list_person').show();
-
-		$('#roleModal').modal({show:true});
-
-
-	},
-	addRoleTree:function(){
-		var that = this;
-		$('.addBtn').click(function(event){
-			
-			that.falshZtree('新增');
-			//that.initZtree('../../json/role/listPerMenu.json','get');
-	    	//that.checkRole($('.ztreeRoleInput'),"/manage/role/addCheck");
-	    	that.ztreeDateSave();	
-			
-		})
-
-	},
-	initZtree:function(data){
-		var zNodes = data;
-	    //ajax获取数据 模拟数据
-	    var setting = {
-	   		view:{
-	   			showIcon:false,
-	   			fontCss:{}
-	   		},
-		   	check:{
-		   		enable:true,
-		   		chkboxType :{ "Y" : "ps", "N" : "ps" },
-		   		chkStyle:"checkbox"
-		   	},
-		   	data: {
-				simpleData: {
-					enable: true,
-					idKey: "id",
-					pIdKey: "pId",
-					rootPId: 0
-				}
-			}
-	    };
-
-	    // var ajaxObj = {
-	   	// 	url:ajaxURL,
-	   	// 	type:method,
-	   	// 	dataType:"json",
-	   	// 	async : false,//必写
-	   	// 	success:function(res){
-	   	// 		console.log(res)
-	   	// 		zNodes = res.menus;
-	   	// 		//callback();
-	   	// 	}
-	    // }
-	    // var params = {
-	   	// 	data:{"id":id}
-	    // }
-
-	    // if(method == "get"){
-	   	// 	$.ajax(ajaxObj)
-	    // }
-	    // if(method == "post"){
-	   	// 	$.ajax($.extend(ajaxObj,params))
-	    // }
-	   
-	   	//console.log($.extend(ajaxObj,params))
-
-	    $.fn.zTree.init($('#treePermission'), setting, zNodes); 
-
-	    var zTreeObj = $.fn.zTree.getZTreeObj('treePermission'); 
-	},
-	EditRoleTree:function(roleId){
-		var that = this;
-		this.falshZtree('修改');
-		//this.initZtree('../../json/role/listPerMenu.json','get',"123456789");
-		$.ajax({
-			url:"../../json/role/listPerMenu.json",
-			type:"get",	
-			cache: "false",
-			data:{
-			"roleId":roleId	
-			},
-			success:function(data){
-				console.log('点击【修改】获取对应permission个人信息--------')
-				console.log(data)						
-				that.initZtree(data)
-			}
-		})	
-	},
-	/*
-		@param elem   
-		@param title
-	*/
-	falshZtree:function(title){
-
-		$('.table_wrapper').addClass('col-lg-9');
-		$('.table_wrapper .options').find('.btn:not(:first())').each(function(){
-				console.log($(this))
-				$(this).css({"margin-left":"0"})
-		})
-
-		$('.ztree_title').html(title);
-		$('.ztreeWrapper').removeClass('slideOutRight');		
-		$('.ztreeWrapper').addClass('slideInRight').fadeIn();
-
-		//【取消】恢复全屏样式
-		$('.btnWrapper .treeCancel').click(function(){
-
-			$('.ztreeWrapper').css({"display":"none"});
-
-			$('.table_wrapper').removeClass('col-lg-9');
-			//option
-			$('.table_wrapper .options .delBtn').css({"margin-left":"-36px"})
-			console.log($('.table_wrapper .options .delBtn'))
-			$('.table_wrapper .options .batchBtn').css({"margin-left":"-72px"})
-
-		})
-
 	}
 })
+
 $(function(){
     role.init();
     console.log(role)
