@@ -51,7 +51,43 @@
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              
+              <div class="menu_section">
+                
+                <ul class="nav side-menu">
+                  <!-- /。0 -->
+                  <li class="hide" data-index="0"><a><i class="fa fa-home"></i>首页</a></li>
+                  <!-- /. 1-->
+                  <li class="" data-index="1"><a href="./device_map.html"><i class="fa fa-edit"></i>地图分布</a></li>
+                  <li class="" data-index="1"><a><i class="fa fa-edit"></i>设备列表<span class="fa fa-chevron-down"></span></a>
+                  	 <ul class="nav child_menu">
+                      <li><a href="./device_listAll.html">所有设备</a></li>
+                      <li><a href="#">关联设备</a></li>
+                    </ul>
+                  </li>
+                  
+                  <!-- /. 2-->
+                  <li class="hide" data-index="2"><a href="./fault_list.html"><i class="fa fa-desktop"></i>故障列表</a></li>
+                  <li class="hide" data-index="2"><a href="./fault_analyze.html"><i class="fa fa-desktop"></i>报警及故障统计</a></li>
+                  <!-- /. 3-->                 
+                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i>产品管理<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="./product_configuration.html">产品配置</a></li>
+                    </ul>
+                  </li>
+                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
+                     <ul class="nav child_menu">
+                      <li><a href="./company_user.html">公司用户</a></li>
+                      <li><a href="./customer.html">客户</a></li>
+                    </ul>
+                  </li>
+                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 系统信息 <span class="fa fa-chevron-down"></span></a>
+                     <ul class="nav child_menu">
+                      <li><a href="./system_message.html">企业信息</a></li>
+                      <li><a href="./system_log.html">系统日志</a></li>
+                    </ul>
+                  </li>                  
+                </ul>
+              </div>
               
 
             </div>
@@ -84,7 +120,7 @@
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
               <!-- /.左侧主导航栏 -->
-              <section id="navigation"></section>
+              <section id="navigation"></section>	
             </nav>
           </div>
         </div>
@@ -460,10 +496,8 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
+        <footer id="footer">
+          
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
@@ -480,10 +514,12 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- iCheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
- 
+ 	  <!-- ECharts -->
+ 	  <script src="../vendors/echarts/dist/echarts.min.js"></script>
     <!-- Custom Theme Scripts -->  
     <script src="../build/js/custom.min.js"></script>
     <script src="./js/publicFun.js"></script>
+    <script src="./js/device.js"></script>
     
   </body>
 </html>

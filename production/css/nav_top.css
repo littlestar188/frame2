@@ -31,3 +31,6 @@
 		width:24%;
 	}
 }
+.nav.side-menu>li.active, .nav.side-menu>li.current-page{
+	border-right: 4px solid #1ABB9C;
+}
