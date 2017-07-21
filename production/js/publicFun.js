@@ -39,7 +39,9 @@ var publicFun = {
 	    	$secondNavs.each(function(){
 	    		var index = $(this).parent().attr('data-index');
 	    		var href1 = $(this).attr("href");
-	    		if(href1.indexOf(pageName) !== -1 ){
+	    		console.log(href1)
+	    		if(href1.indexOf(pageName) !== -1){
+	    		
 	    			$(this).parents('li[data-index='+index+']').removeClass('hide');
     				$(this).parents('li[data-index='+index+']').siblings().addClass('hide');
 
@@ -47,7 +49,7 @@ var publicFun = {
 	    			//console.log($('#sidebar-menu').find('.menu_section>.side-menu>li[data-index='+index+']>.child_menu').length)
 	    			if($('#sidebar-menu').find('.menu_section>.side-menu>li[data-index='+index+']>.child_menu').length != 0){
 		    			$thirdNavs = $('#sidebar-menu').find('.menu_section>.side-menu>li[data-index='+index+']>.child_menu>li>a');
-		    			console.log($thirdNavs)
+		    			//console.log($thirdNavs)
 		    			$thirdNavs.each(function(){
 		    				var href2 = $(this).attr("href");
 		    				if(href2.indexOf(pageName) !== -1 ){
@@ -61,40 +63,23 @@ var publicFun = {
 	    			
 
 	    		}
-	    		//考虑若存在三级导航则二级导航是#的情况 
-	    		// var index = $(this).parent().attr('data-index');
 	    		
-
-    			// $thirdNavs = $('#sidebar-menu').find('.menu_section>.side-menu>li[data-index='+index+']>.child_menu>li>a');
-
-    			// if($thirdNavs.length !==0){
-    			// 	$thirdNavs.each(function(){
-    			// 		var href2 = $(this).attr("href");
-    			// 		console.log("href2"+href2)
-    			// 		if(href2.indexOf(pageName) !== -1 ){
-    			// 			$(this).parents('li[data-index='+index+']').removeClass('hide').addClass('active');
-  					// 		$(this).parents('li[data-index='+index+']>ul.child_menu').css({"display":"block"});
-    			// 			$(this).parents('li[data-index='+index+']').siblings().addClass('hide');
-
-    			// 		}
-    			// 	})	
-	    		// }else{
-	    		// 	var href1 = $(this).attr("href");
-	    		// 	console.log(11111111111111111)
-	    		// 	console.log('href1'+href1)
-	    		// 	if(href1.indexOf(pageName) !== -1 ){
-	    		// 		$(this).parents('li[data-index='+index+']').removeClass('hide');
-    			// 		$(this).parents('li[data-index='+index+']').siblings().addClass('hide');
-    			// 	}
-	    		// }
-	    	
-
-	    		// console.log($thirdNavs,index)
-		    	
 	            
 	         })
 	    	init_sidebar();
         })
+	},
+	//获取当前页面名
+	currentPageName:function(){
+				
+		var lastPathName = this.pathName.split('/');
+		lastPathName = lastPathName[lastPathName.length-1];
+
+		var pageName = lastPathName.split('.');
+		//console.log(pageName)
+		pageName = pageName[0].split('_')[0];
+
+		return pageName;		
 	},
 	// 左边第二、三级导航
 	leftChildnav:function(){
@@ -168,17 +153,7 @@ var publicFun = {
 		
 
 	},
-	//获取当前页面名
-	currentPageName:function(){
-				
-		var lastPathName = this.pathName.split('/');
-		lastPathName = lastPathName[lastPathName.length-1];
-
-		var pageName = lastPathName.split('.');
-		pageName = pageName[0];
-
-		return pageName;		
-	},
+	
 	// 左边第二、三级导航
 	sideBar:function(){
 	    var that = this;
