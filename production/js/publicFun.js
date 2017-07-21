@@ -35,15 +35,16 @@ var publicFun = {
         	console.log(pageName)
 
         	var $secondNavs = $(this).find('.menu_section>.side-menu>li[data-index]>a');
-        	
-	    	$secondNavs.each(function(){
+	    	$secondNavs.each(function(i,n){
+	    		console.log(n)
 	    		var index = $(this).parent().attr('data-index');
 	    		var href1 = $(this).attr("href");
 	    		console.log(href1)
 	    		if(href1.indexOf(pageName) !== -1){
 	    		
 	    			$(this).parents('li[data-index='+index+']').removeClass('hide');
-    				$(this).parents('li[data-index='+index+']').siblings().addClass('hide');
+    				$('li[data-index=0]').addClass('hide');
+    				$('.nav_menu').find('li').eq(index).addClass('active');
 
 	    		}else{
 	    			//console.log($('#sidebar-menu').find('.menu_section>.side-menu>li[data-index='+index+']>.child_menu').length)
@@ -55,7 +56,8 @@ var publicFun = {
 		    				if(href2.indexOf(pageName) !== -1 ){
 		    					$(this).parents('li[data-index='+index+']').removeClass('hide').addClass('active');
 	  							$(this).parents('li[data-index='+index+']>ul.child_menu').css({"display":"block"});
-	    						
+	    						$('.nav_menu').find('li').eq(index).addClass('active');
+
 		    				}
 		    			})
 	    			}
@@ -73,8 +75,9 @@ var publicFun = {
 	currentPageName:function(){
 				
 		var lastPathName = this.pathName.split('/');
+		
 		lastPathName = lastPathName[lastPathName.length-1];
-
+		//console.log(lastPathName)
 		var pageName = lastPathName.split('.');
 		//console.log(pageName)
 		pageName = pageName[0].split('_')[0];
@@ -115,7 +118,7 @@ var publicFun = {
 	topNavContent:function(){	
 		var that = this;
 		$.ajax({
-			url:'http://127.0.0.1:80/frame2/production/json/listMenu.json',
+			url:'http://127.0.0.1:80/frame2.2/production/json/listMenu.json',
 			stype:"get",
 			//url:'/manage/menu/leftTree',
 			//type:'post',

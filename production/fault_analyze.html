@@ -22,6 +22,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="./css/public.css" rel="stylesheet" >
+  </head>
   </head>
   <style>
     .show{
@@ -52,43 +54,7 @@
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                
-                <ul class="nav side-menu">
-                  <!-- /。0 -->
-                  <li class="hide" data-index="0"><a><i class="fa fa-home"></i>首页</a></li>
-                  <!-- /. 1-->
-                  <li class="hide" data-index="1"><a href="./device_map.html"><i class="fa fa-edit"></i>地图分布</a></li>
-                  <li class="hide" data-index="1"><a><i class="fa fa-edit"></i>设备列表<span class="fa fa-chevron-down"></span></a>
-                  	 <ul class="nav child_menu">
-                      <li><a href="./device_listAll.html">所有设备</a></li>
-                      <li><a href="#">关联设备</a></li>
-                    </ul>
-                  </li>
-                  
-                  <!-- /. 2-->
-                  <li class="" data-index="2"><a href="./fault_list.html"><i class="fa fa-desktop"></i>故障列表</a></li>
-                  <li class="" data-index="2"><a href="./fault_analyze.html"><i class="fa fa-desktop"></i>报警及故障统计</a></li>
-                  <!-- /. 3-->                 
-                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i>产品管理<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="./product_configuration.html">产品配置</a></li>
-                    </ul>
-                  </li>
-                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
-                     <ul class="nav child_menu">
-                      <li><a href="./company_user.html">公司用户</a></li>
-                      <li><a href="./customer.html">客户</a></li>
-                    </ul>
-                  </li>
-                  <li class="hide" data-index="3"><a><i class="fa fa-table"></i> 系统信息 <span class="fa fa-chevron-down"></span></a>
-                     <ul class="nav child_menu">
-                      <li><a href="./system_message.html">企业信息</a></li>
-                      <li><a href="./system_log.html">系统日志</a></li>
-                    </ul>
-                  </li>                  
-                </ul>
-              </div>
+             
               
 
             </div>
@@ -121,135 +87,7 @@
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
               <!-- /.左侧主导航栏 -->
-              <ul class="nav navbar-nav navbar-left" id="top_firstNav">
-              <!-- /. -->
-                <li class="">
-                  <a href="./index2.html" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   首页
-                    <!-- <span class=" fa fa-angle-down"></span> -->
-                  </a>
-                  <!-- <ul class="dropdown-menu dropdown-usermenu">
-                    <li><a href="javascript:;">Dashboard</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span>Dashboard</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:;">Dashboard</a>
-                    </li>
-                   
-                  </ul> -->
-                </li>
-                <!-- /. -->
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                   设备管理
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                </li>
-                <!-- /. -->
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  设备故障
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                </li>
-                <!-- /. -->
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  系统管理
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                </li>
-              </ul>
-              <!-- /.右侧个人导航 -->
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  
-                   
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      John Doe
-                      <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                      <li><a href="javascript:;"> 个人中心</a></li>
-                      <li>
-                          <a href="javascript:;">
-                              <span>修改密码</span>
-                          </a>
-                      </li>
-                      <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i>退<span style="visibility:hidden">退出</span>出</a></li>
-                  </ul>
-                    
-                               
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <section id="navigation"></section>
             </nav>
           </div>
         </div>
@@ -465,7 +303,6 @@
  	
     <!-- Custom Theme Scripts -->  
     <script src="../build/js/custom.min.js"></script>
-     <script src="./js/index2.js"></script>
-    
+     <script src="./js/publicFun.js"></script>
   </body>
 </html>

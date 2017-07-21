@@ -37,3 +37,8 @@
 .top_nav .nav>li.active{
 	background: #D9DEE4
 }
+
+/**/
+.control-group{
+	margin-right:15px;
+}

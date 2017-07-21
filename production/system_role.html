@@ -15,13 +15,11 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- iCheck -->
-	  <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-    <link href="./css/public.css" rel="stylesheet" >
+     <link href="./css/public.css" rel="stylesheet" >
   </head>
   <style>
     .show{
@@ -50,6 +48,7 @@
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+             
               
 
             </div>
@@ -83,6 +82,7 @@
               </div>
               <!-- /.左侧主导航栏 -->
               <section id="navigation"></section>
+              
             </nav>
           </div>
         </div>
@@ -94,79 +94,38 @@
             <div class="x_content">
             <!--  -->
             <div class="row">
-              <form class="form-inline row" style="padding-bottom:5px">
-               <!-- col -->
-                 <div class="col-lg-2 control-group">
-                   <div class="controls">
-                      <input type="text" style="width: 240px" class="form-control" placeholder="用户编号/用户名">   
-                   </div>
-                 </div>
-                 <!-- col -->
-                 <div class="col-lg-2 controls" style="margin-left:-15px;">
-                   <div class="input-prepend input-group">
-                     <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                     <input type="text" style="width: 220px" name="reservation" id="reservation" class="form-control" value="01/01/2016 - 01/25/2016">
-                   </div>
-                 </div>
-                 <!-- col -->
-                 <div class="col-lg-1 control-group">
-                 	<button type="submit" class="btn btn-success">搜索</button>
-             	 </div> 
-               </form>
-               <!-- table -->
-               <div class="table-responsive">
-                 <table class="table table-striped jambo_table bulk_action">
-                   <thead>
-                     <tr class="headings">
-                       <th>
-                         <input type="checkbox" id="check-all" class="flat">
-                       </th>
-                       <th class="column-title">序号 </th>
-                       <th class="column-title">用户编号 </th>
-                       <th class="column-title">用户名 </th>
-                       <th class="column-title">登录IP </th>
-                       <th class="column-title">操作内容</th>
-                       <th class="column-title">操作时间</th>
-                       <th class="bulk-actions" colspan="6">
-                         <a class="antoo" style="color:#fff; font-weight:500;">已全选<!--  ( <span class="action-cnt"> </span> ) --> </a>
-                       </th>
-                     </tr>
-                   </thead>
-
-                   <tbody>
-                     <tr class="even pointer">
-                       <td class="a-center ">
-                         <input type="checkbox" class="flat" name="table_records">
-                       </td>
-                       <td class=" ">1</td>
-                       <td class="">14655</td>
-                       <td class=" ">小李</td>
-                       <td class=" ">导出报表</td>
-                       <td class=" ">127.0.0.1</td>
-                       <td class="a-right a-right ">2017/05/01 10:10:10</td>
-                     </tr>
-                     <tr class="odd pointer">
-                       <td class="a-center ">
-                         <input type="checkbox" class="flat" name="table_records">
-                       </td>
-                       <td class=" ">2</td>
-                        <td class="">14655</td>
-                       <td class=" ">小李</td>
-                       <td class=" ">导出报表</td>
-                       <td class=" ">127.0.0.1</td>
-                       <td class="a-right a-right ">2017/05/01 10:10:10</td>
-                     </tr>
-                   </tbody>
-                 </table>
-               </div>
-               <!-- table end -->
-                <div class="options">
-                	<div class="form-inline row">		    	               
-    	                <!--  -->
-    	                
-    	                <!--  -->
-	                </div>
-                </div>
+              <!-- col -->
+              <div class="col-md-3 col-sm-3 col-xs-12 profile_details">
+                  <div class="well profile_view">
+                      <div class="col-sm-12" style="padding:0">
+                      	<div class="col-xs-12" style="padding-bottom:10px;">
+                    		<h2 class="brief" style="line-height:230%"><b>海大物联科技有限公司</b></h2>
+                    		<button type="button" class="btn btn-primary btn-xs">详情</button>
+                    	</div>
+                      <!-- col -->
+                      <div class="col-xs-7">                       
+                        <ul class="list-unstyled">
+                          <li>地址 : 宁波海大</li>
+                          <li>电话 : 13264578912</li>
+                          <li>邮箱 : 578912@hadlinks.com</li>
+                        </ul>
+                      </div>
+                      <!-- col -->
+                      <div class="col-xs-5 text-left">
+                      	<ul class="list-unstyled">
+                          <li>合约状态 : 正常</li>
+                          <li>合约模式 : 按时间计费</li>
+                          <li>截止时间 : 2019/05/08</li>
+                        </ul>   
+                      </div>
+                      <!--  -->
+                    </div>
+                    <div class="col-xs-12 bottom text-center">
+                    </div>
+                  </div>
+                  <!-- col-sm-12 end -->
+                </div> 
+                
                <!--  -->
                 <div class="clearfix"></div>
             </div>
@@ -198,11 +157,9 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
      <!-- icheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+ 
     <!-- DateJS -->
-   <!--  <script src="../vendors/DateJS/build/date.js"></script> -->
+    <script src="../vendors/DateJS/build/date.js"></script>
     
     <!-- Custom Theme Scripts -->
     
