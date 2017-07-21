@@ -41,7 +41,7 @@
 
 var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
     $BODY = $('body'),
-    $MENU_TOGGLE = $('#menu_toggle'),
+    $MENU_TOGGLE = $('body').find('#menu_toggle'),
     $SIDEBAR_MENU = $('#sidebar-menu'),
     $SIDEBAR_FOOTER = $('.sidebar-footer'),
     $LEFT_COL = $('.left_col'),
@@ -99,7 +99,8 @@ var setContentHeight = function () {
         }
     });
 
-// toggle small or large menu 
+// toggle small or large menu
+$MENU_TOGGLE.off('click'); 
 $MENU_TOGGLE.on('click', function() {
 		console.log('clicked - menu toggle');
 		

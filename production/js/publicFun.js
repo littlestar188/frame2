@@ -35,11 +35,11 @@ var publicFun = {
         	console.log(pageName)
 
         	var $secondNavs = $(this).find('.menu_section>.side-menu>li[data-index]>a');
-	    	$secondNavs.each(function(i,n){
-	    		console.log(n)
+	    	$secondNavs.each(function(){
+	    		
 	    		var index = $(this).parent().attr('data-index');
 	    		var href1 = $(this).attr("href");
-	    		console.log(href1)
+	    		//console.log(href1)
 	    		if(href1.indexOf(pageName) !== -1){
 	    		
 	    			$(this).parents('li[data-index='+index+']').removeClass('hide');
@@ -60,13 +60,10 @@ var publicFun = {
 
 		    				}
 		    			})
-	    			}
-	    			
-	    			
+	    			}	    			
 
 	    		}
-	    		
-	            
+	    			            
 	         })
 	    	init_sidebar();
         })
@@ -245,17 +242,37 @@ var publicFun = {
 	    //点击子导航 主导航active消失
 	    $('.right_col .sideRight_menu .tabs-left').on('click','li.item-wrapper li',function(){
 	        //console.log($(this))
-	        //console.log($(this).parents('.item-wrapper').siblings())
+	        
 	        var navItem_active = $(this).parents('.item-wrapper').siblings().filter('li.nav-item.active');
 	        $(navItem_active).removeClass('active');
 	                    
 	    })
 	    
 
+	},
+	backTo:function(){
+		$(window).scroll(function(){
+		   var sc = $(window).scrollTop();
+		   console.log(sc)
+		  
+		   if(sc>100){
+		      $("#back_top").css({'display':'block'}).removeClass("flipOutX").addClass('flipInX');
+		 
+		   }else{
+		      $("#back_top").removeClass('flipInX').addClass("flipOutX");
+		   }
+		 })
+
+		 $("#back_top").click(function(){
+		   var sc=$(window).scrollTop();
+		   $('body,html').animate({scrollTop:0},500);
+		 })
 	}
 }
 $(function(){
 	publicFun.render();
+	publicFun.backTo();
+
 })
 function replaceAll(str,old,now){
 	var reg = new RegExp(old,'g');

@@ -32,7 +32,7 @@ var index = {
                 console.log(count)
                 for(var key = 0;key<length;key++){
                   (function(i){       
-                    str =  '<div class="animated flipInY col-lg-'+count+' col-md-'+count+' col-sm-6 col-xs-12">'
+                    str =  '<div class="col-lg-'+count+' col-md-'+count+' col-sm-6 col-xs-12">'
                         +'<div class="tile-stats">'
                           // +'<div class="icon"><i class="fa fa-caret-square-o-right"></i></div>'//icon
                           +'<div class="count">'+data[i].number+'</div>'
