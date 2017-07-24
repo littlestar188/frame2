@@ -253,7 +253,7 @@ var publicFun = {
 	backTo:function(){
 		$(window).scroll(function(){
 		   var sc = $(window).scrollTop();
-		   console.log(sc)
+		   //console.log(sc)
 		  
 		   if(sc>100){
 		      $("#back_top").css({'display':'block'}).removeClass("flipOutX").addClass('flipInX');
@@ -261,6 +261,7 @@ var publicFun = {
 		   }else{
 		      $("#back_top").removeClass('flipInX').addClass("flipOutX");
 		   }
+
 		 })
 
 		 $("#back_top").click(function(){

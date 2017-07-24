@@ -2,7 +2,7 @@
 	"data":[
 
 		{
-			"name":"系统管理",	
+			"name":"设备管理",	
 			"sub_menu":[
 				{
 					"name":"用户管理",
@@ -42,7 +42,7 @@
 		]
 	},
 	{
-		"name":"设备管理",
+		"name":"系统管理",
 		"link":"http://192.168.0.15:80/frame/pages/forms/device/device.html",
 		"sub_menu":null,
 		"permission":[1,2,3,4]
