@@ -10,17 +10,16 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="./vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
+    <link href="./vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- animation -->
+    <link href="./vendors/animate.css/animate.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    <link href="./css/nav_top.css" rel="stylesheet" >
+    <link href="./css/custom.min.css" rel="stylesheet">
+    <link href="./css/public.css" rel="stylesheet" >
   </head>
   <style>
     .show{
@@ -29,6 +28,9 @@
     .hide{
       display: none;
     }
+    
+    
+    
   </style>
   <body class="nav-md">
     <div class="container body">
@@ -91,7 +93,12 @@
           </div>
         </div>
         <!-- /top navigation -->
-
+        <!-- back to top -->
+        <div id="back_top" class="animated">
+          <div class="top_icon"><i class="fa fa-chevron-up"></i></div>
+          
+        </div>
+        <!-- /back to top  -->
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -257,38 +264,22 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="./vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- jQuery Sparklines -->
-    <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <script src="./vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- ECharts -->
-    <script src="../vendors/echarts/dist/echarts.min.js"></script>
-    <script src="../vendors/echarts/map/js/world.js"></script>
-    <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    <script src="./vendors/echarts/dist/echarts.min.js"></script>
+    <script src="./vendors/echarts/map/js/world.js"></script> 
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="./vendors/moment/min/moment.min.js"></script>
+    <script src="./vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     
-    <!-- Custom Theme Scripts -->
-     <script src="../build/js/custom.min.js"></script>
-     <script src="./js/index2.js"></script>
+     <!-- Custom Theme Scripts -->
+     <script src="./js/custom.js"></script>
+     <script src="./js/publicFun.js"></script>
+     <script src="./js/chart.js"></script>
+     <script src="./js/index3.js"></script>
+     
+     
   </body>
 </html>

@@ -21,7 +21,7 @@ var index = {
     tileStats:function(){
         var str = "";
         $.ajax({
-            url:"./json/tileList.json",
+            url:"./resources/json/tileList.json",
            // cache: false,
             dataType: 'json',
             success:function(data){
@@ -57,7 +57,7 @@ var index = {
     messageList:function(){
         var that = this;
         $.ajax({
-            url:"./json/stock.json",
+            url:"./resources/json/stock.json",
            // cache: false,
             dataType: 'json',
             success:function(data){

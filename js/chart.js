@@ -31,7 +31,7 @@ var chart = {
         var that = this;
         
         $.ajax({
-            url:"./json/echartData/echratData-new.json",
+            url:"./resources/json/echartData/echratData-new.json",
             //url:'/manage/chart/stock/',
             //type:'post',
             cache: false,
@@ -226,7 +226,7 @@ var chart = {
                
               
         $.ajax({
-            url:"./json/echartData/echratData2-device-num.json",
+            url:"./resources/json/echartData/echratData2-device-num.json",
             cache: false,
             dataType: 'json',
             success:function(data){

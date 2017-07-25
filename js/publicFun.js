@@ -3,14 +3,15 @@ var publicFun = {
 	 $navMenu:$('.nav_menu'),
 	 navData:{},
 	 pathName:window.location.pathname,
-	 navUrl:'/frame2.2/production/layout/top_nav3.html',
-	 footerUrl:'/frame2.2/production/layout/footer.html',
-	 sidebarUrl:'/frame2.2/production/layout/side_menu3.html',
+	 navUrl:'./resources/layout/top_nav3.html',
+	 footerUrl:'./resources/layout/footer.html',
+	 sidebarUrl:'./resources/layout/side_menu3.html',
 	init:function(){
 		
 	},
 	render:function(){
 		var that = this;
+		//$('head').load('./resources/layout/head.html',function(){})
 		//加载一级导航
 		$('#navigation').load(this.navUrl,function(){
 	    	//加载导航内容
@@ -115,7 +116,7 @@ var publicFun = {
 	topNavContent:function(){	
 		var that = this;
 		$.ajax({
-			url:'http://127.0.0.1:80/frame2.2/production/json/listMenu.json',
+			url:'./resources/json/listMenu.json',
 			stype:"get",
 			//url:'/manage/menu/leftTree',
 			//type:'post',
